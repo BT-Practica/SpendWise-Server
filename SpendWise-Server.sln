@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpendWise-Server", "SpendWise-Server\SpendWise-Server.csproj", "{16CC04EF-E80C-4CA1-9D17-92DDE44A3710}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpendWise-Server", "SpendWise-Server\SpendWise-Server.csproj", "{16CC04EF-E80C-4CA1-9D17-92DDE44A3710}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpendWise-Server.Repos", "SpendWise-Server.Repos\SpendWise-Server.Repos.csproj", "{BE2ED3FF-33AB-4103-B31D-BAAA63A8A2E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpendWise-Server.Business", "SpendWise-Server.Business\SpendWise-Server.Business.csproj", "{98D2F59B-FFE6-497D-A2BB-418E8167FCAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpendWise-Server.Common", "SpendWise-Server.Common\SpendWise-Server.Common.csproj", "{E45346E9-7106-4ADC-9040-8583C21A2827}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpendWise-Server.Models", "SpendWise-Server.Models\SpendWise-Server.Models.csproj", "{A495B828-E3C2-4A30-961A-03959F864092}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{16CC04EF-E80C-4CA1-9D17-92DDE44A3710}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16CC04EF-E80C-4CA1-9D17-92DDE44A3710}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16CC04EF-E80C-4CA1-9D17-92DDE44A3710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE2ED3FF-33AB-4103-B31D-BAAA63A8A2E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE2ED3FF-33AB-4103-B31D-BAAA63A8A2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE2ED3FF-33AB-4103-B31D-BAAA63A8A2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE2ED3FF-33AB-4103-B31D-BAAA63A8A2E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98D2F59B-FFE6-497D-A2BB-418E8167FCAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98D2F59B-FFE6-497D-A2BB-418E8167FCAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98D2F59B-FFE6-497D-A2BB-418E8167FCAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98D2F59B-FFE6-497D-A2BB-418E8167FCAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E45346E9-7106-4ADC-9040-8583C21A2827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E45346E9-7106-4ADC-9040-8583C21A2827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E45346E9-7106-4ADC-9040-8583C21A2827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E45346E9-7106-4ADC-9040-8583C21A2827}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A495B828-E3C2-4A30-961A-03959F864092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A495B828-E3C2-4A30-961A-03959F864092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A495B828-E3C2-4A30-961A-03959F864092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A495B828-E3C2-4A30-961A-03959F864092}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
