@@ -7,7 +7,7 @@ namespace SpendWise_Server.Controllers
     public class AuthController : ControllerBase
     {
         [HttpPost("Register")]
-        public async Task<IActionResult> Register() //dto user
+        public async Task<IActionResult> Register() //dto user,,,
         {
             // user din models
             return Ok();
