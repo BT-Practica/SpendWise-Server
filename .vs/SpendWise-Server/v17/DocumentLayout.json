@@ -1,12 +1,189 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\razvan\\Desktop\\SpendWise-Server\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BE2ED3FF-33AB-4103-B31D-BAAA63A8A2E4}|SpendWise-Server.Repos\\SpendWise-Server.Repos.csproj|c:\\users\\andrei alionte\\source\\repos\\spendwise-server\\spendwise-server.repos\\datalayer\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE2ED3FF-33AB-4103-B31D-BAAA63A8A2E4}|SpendWise-Server.Repos\\SpendWise-Server.Repos.csproj|solutionrelative:spendwise-server.repos\\datalayer\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server.Repos\\Migrations\\20240625122345_Initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SpendWise-Server.Repos\\Migrations\\20240625122345_Initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE2ED3FF-33AB-4103-B31D-BAAA63A8A2E4}|SpendWise-Server.Repos\\SpendWise-Server.Repos.csproj|c:\\users\\andrei alionte\\source\\repos\\spendwise-server\\spendwise-server.repos\\extensionmethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE2ED3FF-33AB-4103-B31D-BAAA63A8A2E4}|SpendWise-Server.Repos\\SpendWise-Server.Repos.csproj|solutionrelative:spendwise-server.repos\\extensionmethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CC04EF-E80C-4CA1-9D17-92DDE44A3710}|SpendWise-Server\\SpendWise-Server.csproj|c:\\users\\andrei alionte\\source\\repos\\spendwise-server\\spendwise-server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CC04EF-E80C-4CA1-9D17-92DDE44A3710}|SpendWise-Server\\SpendWise-Server.csproj|solutionrelative:spendwise-server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98D2F59B-FFE6-497D-A2BB-418E8167FCAA}|SpendWise-Server.Business\\SpendWise-Server.Business.csproj|c:\\users\\andrei alionte\\source\\repos\\spendwise-server\\spendwise-server.business\\extensionmethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98D2F59B-FFE6-497D-A2BB-418E8167FCAA}|SpendWise-Server.Business\\SpendWise-Server.Business.csproj|solutionrelative:spendwise-server.business\\extensionmethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A495B828-E3C2-4A30-961A-03959F864092}|SpendWise-Server.Models\\SpendWise-Server.Models.csproj|c:\\users\\andrei alionte\\source\\repos\\spendwise-server\\spendwise-server.models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A495B828-E3C2-4A30-961A-03959F864092}|SpendWise-Server.Models\\SpendWise-Server.Models.csproj|solutionrelative:spendwise-server.models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CC04EF-E80C-4CA1-9D17-92DDE44A3710}|SpendWise-Server\\SpendWise-Server.csproj|c:\\users\\andrei alionte\\source\\repos\\spendwise-server\\spendwise-server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{16CC04EF-E80C-4CA1-9D17-92DDE44A3710}|SpendWise-Server\\SpendWise-Server.csproj|solutionrelative:spendwise-server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server\\Migrations\\20240625114549_Initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SpendWise-Server\\Migrations\\20240625114549_Initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CC04EF-E80C-4CA1-9D17-92DDE44A3710}|SpendWise-Server\\SpendWise-Server.csproj|c:\\users\\andrei alionte\\source\\repos\\spendwise-server\\spendwise-server\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CC04EF-E80C-4CA1-9D17-92DDE44A3710}|SpendWise-Server\\SpendWise-Server.csproj|solutionrelative:spendwise-server\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20240625122345_Initial.cs",
+              "DocumentMoniker": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server.Repos\\Migrations\\20240625122345_Initial.cs",
+              "RelativeDocumentMoniker": "SpendWise-Server.Repos\\Migrations\\20240625122345_Initial.cs",
+              "ToolTip": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server.Repos\\Migrations\\20240625122345_Initial.cs",
+              "RelativeToolTip": "SpendWise-Server.Repos\\Migrations\\20240625122345_Initial.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAsAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T12:23:45.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DataContext.cs",
+              "DocumentMoniker": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server.Repos\\DataLayer\\DataContext.cs",
+              "RelativeDocumentMoniker": "SpendWise-Server.Repos\\DataLayer\\DataContext.cs",
+              "ToolTip": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server.Repos\\DataLayer\\DataContext.cs",
+              "RelativeToolTip": "SpendWise-Server.Repos\\DataLayer\\DataContext.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAA3wBEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T12:06:08.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ExtensionMethods.cs",
+              "DocumentMoniker": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server.Repos\\ExtensionMethods.cs",
+              "RelativeDocumentMoniker": "SpendWise-Server.Repos\\ExtensionMethods.cs",
+              "ToolTip": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server.Repos\\ExtensionMethods.cs",
+              "RelativeToolTip": "SpendWise-Server.Repos\\ExtensionMethods.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAADwvxEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T12:04:38.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ExtensionMethods.cs",
+              "DocumentMoniker": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server.Business\\ExtensionMethods.cs",
+              "RelativeDocumentMoniker": "SpendWise-Server.Business\\ExtensionMethods.cs",
+              "ToolTip": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server.Business\\ExtensionMethods.cs",
+              "RelativeToolTip": "SpendWise-Server.Business\\ExtensionMethods.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T12:02:00.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Andrei Alionte\\Source\\Repos\\SpendWise-Server\\SpendWise-Server.Models\\User.cs",
+              "RelativeDocumentMoniker": "SpendWise-Server.Models\\User.cs",
+              "ToolTip": "C:\\Users\\Andrei Alionte\\Source\\Repos\\SpendWise-Server\\SpendWise-Server.Models\\User.cs",
+              "RelativeToolTip": "SpendWise-Server.Models\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T11:27:32.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "20240625114549_Initial.cs",
+              "DocumentMoniker": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server\\Migrations\\20240625114549_Initial.cs",
+              "RelativeDocumentMoniker": "SpendWise-Server\\Migrations\\20240625114549_Initial.cs",
+              "ToolTip": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server\\Migrations\\20240625114549_Initial.cs",
+              "RelativeToolTip": "SpendWise-Server\\Migrations\\20240625114549_Initial.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwA4AAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T11:45:49.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server\\appsettings.json",
+              "RelativeDocumentMoniker": "SpendWise-Server\\appsettings.json",
+              "ToolTip": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server\\appsettings.json",
+              "RelativeToolTip": "SpendWise-Server\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-25T11:41:49.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server\\Program.cs",
+              "RelativeDocumentMoniker": "SpendWise-Server\\Program.cs",
+              "ToolTip": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server\\Program.cs",
+              "RelativeToolTip": "SpendWise-Server\\Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAIwBIAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T11:39:24.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "SpendWise-Server\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\Andrei Alionte\\source\\repos\\SpendWise-Server\\SpendWise-Server\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "SpendWise-Server\\Controllers\\UsersController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwCEAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-25T11:30:44.111Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
