@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SpendWise-Server.props" />
+</Project>
