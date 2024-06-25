@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SpendWise-Server.Common\SpendWise-Server.Common.csproj" />
+    <ProjectReference Include="..\SpendWise-Server.Models\SpendWise-Server.Models.csproj" />
+  </ItemGroup>
+
 </Project>
