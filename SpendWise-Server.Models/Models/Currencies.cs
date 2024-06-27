@@ -12,12 +12,12 @@ public class Currencies
     [Key]
     public int Id { get; set; }
     [Required]
-    [MaxLength(5)]
-    public string Symbol {get; set;}
+    [MaxLength(4)]
+    public string Symbol { get; set; }
     [Required]
     [MaxLength(30)]
-    public string Name {get; set;}
-    public ICollection<User> Users {get; set;} = [];
-    public ICollection<Currencies> Currency {get; set;} = [];
-    public ICollection<Currencies> CurrencyOf {get; set;} = [];
+    public string Name { get; set; }
+    public ICollection<User> Users { get; set; } = [];
+    public ICollection<Exchange> FirstExchanges { get; set; } = [];
+    public ICollection<Exchange> SecondExchanges { get; set; } = [];
 }

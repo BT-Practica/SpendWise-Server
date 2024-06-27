@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SpendWise_Server.Models;
 
-[Index(nameof(UserName), IsUnique=true)]
+[Index(nameof(UserName), nameof(Email), IsUnique=true)]
 public class User
 {
     [Key]

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SpendWise_Server.Repos.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class FinalConstraintsModels : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,7 @@ namespace SpendWise_Server.Repos.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Symbol = table.Column<string>(type: "nvarchar(1)", nullable: false),
+                    Symbol = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
                 },
                 constraints: table =>
@@ -42,21 +42,19 @@ namespace SpendWise_Server.Repos.Migrations
                 name: "Exchanges",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Amount = table.Column<double>(type: "float", nullable: false),
-                    CurrencyId = table.Column<int>(type: "int", nullable: false),
-                    SecondCurrencyId = table.Column<int>(type: "int", nullable: false)
+                    FirstCurrencyId = table.Column<int>(type: "int", nullable: false),
+                    SecondCurrencyId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Exchanges", x => x.Id);
+                    table.PrimaryKey("PK_Exchanges", x => new { x.FirstCurrencyId, x.SecondCurrencyId });
                     table.ForeignKey(
-                        name: "FK_Exchanges_Currencies_CurrencyId",
-                        column: x => x.CurrencyId,
+                        name: "FK_Exchanges_Currencies_FirstCurrencyId",
+                        column: x => x.FirstCurrencyId,
                         principalTable: "Currencies",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Exchanges_Currencies_SecondCurrencyId",
                         column: x => x.SecondCurrencyId,
@@ -115,7 +113,7 @@ namespace SpendWise_Server.Repos.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RegistrationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Reccurence = table.Column<bool>(type: "bit", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     Income_CategoryId = table.Column<int>(type: "int", nullable: false)
@@ -141,11 +139,6 @@ namespace SpendWise_Server.Repos.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Exchanges_CurrencyId",
-                table: "Exchanges",
-                column: "CurrencyId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Exchanges_SecondCurrencyId",
                 table: "Exchanges",
                 column: "SecondCurrencyId");
@@ -164,6 +157,12 @@ namespace SpendWise_Server.Repos.Migrations
                 name: "IX_Users_CurrencyId",
                 table: "Users",
                 column: "CurrencyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_UserName_Email",
+                table: "Users",
+                columns: new[] { "UserName", "Email" },
+                unique: true);
         }
 
         /// <inheritdoc />

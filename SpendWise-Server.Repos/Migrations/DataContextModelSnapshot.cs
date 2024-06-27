@@ -37,8 +37,8 @@ namespace SpendWise_Server.Repos.Migrations
 
                     b.Property<string>("Symbol")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
 
                     b.HasKey("Id");
 
@@ -122,36 +122,21 @@ namespace SpendWise_Server.Repos.Migrations
 
             modelBuilder.Entity("SpendWise_Server.Models.Models.Exchange", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<double>("Amount")
-                        .HasColumnType("float");
-
-                    b.Property<int>("CurrencyId")
-                        .HasColumnType("int");
-
                     b.Property<int>("FirstCurrencyId")
                         .HasColumnType("int");
 
                     b.Property<int>("SecondCurrencyId")
                         .HasColumnType("int");
 
-                    b.Property<int>("SecondCurrencyId1")
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("CurrencyId");
-
-                    b.HasIndex("FirstCurrencyId");
+                    b.HasKey("FirstCurrencyId", "SecondCurrencyId");
 
                     b.HasIndex("SecondCurrencyId");
-
-                    b.HasIndex("SecondCurrencyId1");
 
                     b.ToTable("Exchanges");
                 });
@@ -188,7 +173,7 @@ namespace SpendWise_Server.Repos.Migrations
 
                     b.HasIndex("CurrencyId");
 
-                    b.HasIndex("UserName")
+                    b.HasIndex("UserName", "Email")
                         .IsUnique();
 
                     b.ToTable("Users", (string)null);
@@ -226,28 +211,16 @@ namespace SpendWise_Server.Repos.Migrations
 
             modelBuilder.Entity("SpendWise_Server.Models.Models.Exchange", b =>
                 {
-                    b.HasOne("SpendWise_Server.Models.Currencies", null)
-                        .WithMany()
-                        .HasForeignKey("CurrencyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SpendWise_Server.Models.Currencies", "FirstCurrency")
-                        .WithMany()
+                        .WithMany("FirstExchanges")
                         .HasForeignKey("FirstCurrencyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SpendWise_Server.Models.Currencies", null)
-                        .WithMany()
-                        .HasForeignKey("SecondCurrencyId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("SpendWise_Server.Models.Currencies", "SecondCurrency")
-                        .WithMany()
-                        .HasForeignKey("SecondCurrencyId1")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithMany("SecondExchanges")
+                        .HasForeignKey("SecondCurrencyId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("FirstCurrency");
@@ -268,6 +241,10 @@ namespace SpendWise_Server.Repos.Migrations
 
             modelBuilder.Entity("SpendWise_Server.Models.Currencies", b =>
                 {
+                    b.Navigation("FirstExchanges");
+
+                    b.Navigation("SecondExchanges");
+
                     b.Navigation("Users");
                 });
 
