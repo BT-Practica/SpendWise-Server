@@ -24,5 +24,6 @@ public class User
     public ICollection<Incomes> Incomes {get; set;} = [];     
     [Required]
     public Currencies? Currency {get; set;}
+    [Required]
     public int CurrencyId { get; set; }
 }

@@ -11,6 +11,6 @@ public class Income_Categories
     [Key]
     public int Id {get; set;}
     [Required]
-    public string? Name {get; set;}
+    public string Name {get; set;}
     public ICollection<Incomes> Incomes {get; set;} = [];
 }

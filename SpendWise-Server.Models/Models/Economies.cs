@@ -10,11 +10,11 @@ public class Economies
 {
     public int Id { get; set; }
     [Required]
-    public DateTime? RegistrationDate { get; set; }
+    public DateTime RegistrationDate { get; set; }
     [Required]
-    //range lower than the sum of income
-    public double? Amount { get; set; }
+    public double Amount { get; set; }
     [Required]
-    public User? User {get; set;}
+    public User User {get; set;}
+    [Required]
     public int UserId {get; set;}
 }

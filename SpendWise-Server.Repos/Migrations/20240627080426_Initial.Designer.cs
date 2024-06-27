@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpendWise_Server.Repos.DataLayer;
 
@@ -11,9 +12,11 @@ using SpendWise_Server.Repos.DataLayer;
 namespace SpendWise_Server.Repos.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240627080426_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,8 +40,7 @@ namespace SpendWise_Server.Repos.Migrations
 
                     b.Property<string>("Symbol")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.HasKey("Id");
 
@@ -53,10 +55,12 @@ namespace SpendWise_Server.Repos.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<double>("Amount")
+                    b.Property<double?>("Amount")
+                        .IsRequired()
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("RegistrationDate")
+                    b.Property<DateTime?>("RegistrationDate")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
@@ -95,17 +99,17 @@ namespace SpendWise_Server.Repos.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Income_CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Reccurence")
+                    b.Property<bool?>("Reccurence")
+                        .IsRequired()
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("RegistrationDate")
+                    b.Property<DateTime?>("RegistrationDate")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
@@ -134,24 +138,14 @@ namespace SpendWise_Server.Repos.Migrations
                     b.Property<int>("CurrencyId")
                         .HasColumnType("int");
 
-                    b.Property<int>("FirstCurrencyId")
-                        .HasColumnType("int");
-
                     b.Property<int>("SecondCurrencyId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SecondCurrencyId1")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CurrencyId");
 
-                    b.HasIndex("FirstCurrencyId");
-
                     b.HasIndex("SecondCurrencyId");
-
-                    b.HasIndex("SecondCurrencyId1");
 
                     b.ToTable("Exchanges");
                 });
@@ -187,9 +181,6 @@ namespace SpendWise_Server.Repos.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CurrencyId");
-
-                    b.HasIndex("UserName")
-                        .IsUnique();
 
                     b.ToTable("Users", (string)null);
                 });
@@ -232,27 +223,11 @@ namespace SpendWise_Server.Repos.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SpendWise_Server.Models.Currencies", "FirstCurrency")
-                        .WithMany()
-                        .HasForeignKey("FirstCurrencyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SpendWise_Server.Models.Currencies", null)
                         .WithMany()
                         .HasForeignKey("SecondCurrencyId")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
-
-                    b.HasOne("SpendWise_Server.Models.Currencies", "SecondCurrency")
-                        .WithMany()
-                        .HasForeignKey("SecondCurrencyId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FirstCurrency");
-
-                    b.Navigation("SecondCurrency");
                 });
 
             modelBuilder.Entity("SpendWise_Server.Models.User", b =>
