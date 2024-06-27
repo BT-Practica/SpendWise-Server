@@ -23,6 +23,7 @@ public class AuthController : ControllerBase
         //to call UserService.AddUser.done
         //Username to be unique?.done
         _userService.createUser(user);
+        Log.Information($"User:{user} created");
         return Ok();
     }
 
@@ -35,11 +36,8 @@ public class AuthController : ControllerBase
             _userService.FindUserByUNameAndPass(user);
             return Ok(_tokenService.CreateToken(user.userName));
         }
-        catch (InvalidDataException e)
-        {
-            return BadRequest();
-        }
-        catch(KeyNotFoundException){
+        catch(KeyNotFoundException e){
+            Log.Error($"Eroare in AuthController.GetUser: {e.Message}");
             return NotFound("User not found");
         }
     }

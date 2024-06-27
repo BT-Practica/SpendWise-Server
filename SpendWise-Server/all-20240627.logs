@@ -6,3 +6,8 @@
 2024-06-27 14:06:49.467 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
 2024-06-27 14:08:36.773 +03:00 [INF] The log is working
 2024-06-27 14:08:37.632 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-27 14:20:22.614 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-27 14:30:54.856 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-27 14:31:22.775 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-27 14:31:56.895 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 14:38:54.872 +03:00 [ERR] Eroare in AuthController.GetUser: User not found

@@ -1,2 +1,7 @@
 {"Timestamp":"2024-06-27T14:06:49.4677630+03:00","Level":"Error","MessageTemplate":"Eroare in UsersController.GetUser: User not found","TraceId":"0727be33e76061cfeae64df851a13e10","SpanId":"c60dce02b3c05d29"}
 {"Timestamp":"2024-06-27T14:08:37.6321930+03:00","Level":"Error","MessageTemplate":"Eroare in UsersController.GetUser: User not found","TraceId":"03f401c9fb6954fe0fcea87f7263db14","SpanId":"e9aedc993d157050"}
+{"Timestamp":"2024-06-27T14:20:22.6146240+03:00","Level":"Error","MessageTemplate":"Eroare in UsersController.GetUser: User not found","TraceId":"39902447aa93d952fb37c359f7da1ecb","SpanId":"f9c7cda2cc6b6dc4"}
+{"Timestamp":"2024-06-27T14:30:54.8564930+03:00","Level":"Error","MessageTemplate":"Eroare in UsersController.GetUser: User not found","TraceId":"1726442cd3676e457e17a27fba47943b","SpanId":"1747fb9770aaa6bc"}
+{"Timestamp":"2024-06-27T14:31:22.7752820+03:00","Level":"Error","MessageTemplate":"Eroare in UsersController.GetUser: User not found","TraceId":"f7f8adc45901eb8152fa5672c7989e1f","SpanId":"834c067dfae66a22"}
+{"Timestamp":"2024-06-27T14:31:56.8957880+03:00","Level":"Error","MessageTemplate":"Eroare in AuthController.GetUser: User not found","TraceId":"fe97b11b9bcddf979924baf505facb04","SpanId":"b0e19179d5efa639"}
+{"Timestamp":"2024-06-27T14:38:54.8724210+03:00","Level":"Error","MessageTemplate":"Eroare in AuthController.GetUser: User not found","TraceId":"85c3f68cd9845783b6fe695e125e76ee","SpanId":"bf787653ba9554b2"}

@@ -64,11 +64,8 @@ public class UserService : IUserService
     }
 
     public User FindUserByUNameAndPass(UserLoginDTO user){
-        if(user.userName == null || user.Password == null){
-            throw new NullReferenceException("UserName or Password is null");
-        }
         User foundUser = _userRepository.FindUserByUNameAndPass(user);
-        if(user == null){
+        if(foundUser == null){
             throw new KeyNotFoundException("User not found");
         }
         return foundUser;
