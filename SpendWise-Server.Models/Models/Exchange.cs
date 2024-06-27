@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ public class Exchange
     [Required]
     public double Amount {get; set;}
     [Required]
-    public int CurrencyId {get; set;}
+    public int FirstCurrencyId {get; set;}
     [Required]
     public Currencies FirstCurrency {get; set;}
     [Required]
