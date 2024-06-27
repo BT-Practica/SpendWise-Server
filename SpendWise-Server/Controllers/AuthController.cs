@@ -26,13 +26,13 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("Login")]
-    public async Task<IActionResult> Login([FromBody] string userName, string password) 
+    public async Task<IActionResult> Login([FromBody] UserLoginDTO user) 
     {
         //Validate user: in repo to find the user with same username and password.done
         //in business to verify uname,password; if user exists return jwt.done
         try{
-            _userService.FindUserByUNameAndPass(userName, password);
-            return Ok(_tokenService.CreateToken(userName));
+            _userService.FindUserByUNameAndPass(user);
+            return Ok(_tokenService.CreateToken(user.userName));
         }
         catch (InvalidDataException)
         {

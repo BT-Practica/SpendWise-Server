@@ -53,9 +53,9 @@ public class UserRepository : IUserRepository
         _context.SaveChanges();
     }
 
-    public User FindUserByUNameAndPass(string userName, string password){
-        User user = _context.Users.FirstOrDefault(u => u.UserName == userName && u.Password == password);
-        return user;
+    public User FindUserByUNameAndPass(UserLoginDTO user){
+        User foundUser = _context.Users.FirstOrDefault(u => u.UserName == user.userName && u.Password == user.Password);
+        return foundUser;
     }
     
 }
