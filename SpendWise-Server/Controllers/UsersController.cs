@@ -1,42 +1,53 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SpendWise_Server.Business.Interfaces;
 
-namespace SpendWise_Server.Controllers
+namespace SpendWise_Server.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class UsersController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UsersController : ControllerBase
+    private readonly IUserService _userService;
+
+    public UsersController(IUserService userService)
     {
-        [HttpGet("GetUser/{userId}")]
-        public async Task<IActionResult> GetUser(int userId)
-        {
-            return Ok();
-        }
-
-        [HttpGet("GetUsers")]
-        public async Task<IActionResult> GetUsers()
-        {
-            return Ok();
-        }
-
-        [HttpPost("AddUser")]
-        public async Task<IActionResult> AddUser() //dto
-        {
-            //model
-            return Ok();
-        }
-
-        [HttpPut("UpdateUser")]
-        public async Task<IActionResult> UpdateUser()
-        {
-            return Ok();
-        }
-
-        [HttpDelete("RemoveUser")]
-        public async Task<IActionResult> RemoveUser()
-        {
-            return Ok();
-        }
-
-
+        _userService = userService;
     }
+    [HttpGet("GetUser/{userId}")]
+    public async Task<IActionResult> GetUser(int userId)
+    {
+        try{
+            var user = _userService.getUserById(userId);
+            return Ok(user);
+        }
+        catch (InvalidDataException)
+        {
+            return BadRequest();
+        }
+        catch (KeyNotFoundException)
+        {
+            return BadRequest();
+        }
+    }
+
+    [HttpPost("AddUser")]
+    public async Task<IActionResult> AddUser() //dto
+    {
+        //model
+        return Ok();
+    }
+
+    [HttpPut("UpdateUser")]
+    public async Task<IActionResult> UpdateUser()
+    {
+        return Ok();
+    }
+
+    [HttpDelete("RemoveUser")]
+    public async Task<IActionResult> RemoveUser()
+    {
+        return Ok();
+    }
+
+
 }

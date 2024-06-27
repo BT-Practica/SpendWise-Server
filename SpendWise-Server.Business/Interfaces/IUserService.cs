@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs;
 
-namespace SpendWise_Server.Repos.Interfaces
+namespace SpendWise_Server.Business.Interfaces
 {
-    public interface IUserRepository
+    public interface IUserService
     {
         public User getUserById(int id);
         public void createUser(UserRegisterDTO user);

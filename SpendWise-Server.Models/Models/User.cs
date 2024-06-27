@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore;  
 
 namespace SpendWise_Server.Models;
 
+[Index(nameof(UserName), IsUnique=true)]
 public class User
 {
     [Key]

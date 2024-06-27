@@ -13,22 +13,28 @@ namespace SpendWise_Server.Repos.Repositories;
 public class UserRepository : IUserRepository
 {
     private readonly DataContext _context;
-    UserRepository(DataContext context){
+    public UserRepository(DataContext context){
         _context = context;
     }
-    public User createUser(User user)
+    public void createUser(UserRegisterDTO user)
     {
-        _context.Users.Add(user);
+
+        User newUser = new User(){
+            UserName = user.username,
+            Password = user.password,
+            Email = user.email,
+            CreatedDate = DateTime.Now,
+            CurrencyId = user.CurrencyId//to think : default currency
+        };
+        _context.Users.Add(newUser);
         _context.SaveChanges();
-        return _context.Users.FirstOrDefault(u => u.Id == user.Id);
     }
 
-    public User deleteUser(int id)
+    public void deleteUser(int id)
     {
         User userToDelete = _context.Users.FirstOrDefault(u => u.Id == id);
         _context.Users.Remove(userToDelete);
         _context.SaveChanges();
-        return userToDelete;
     }
 
     public User getUserById(int id)
@@ -37,8 +43,19 @@ public class UserRepository : IUserRepository
         return userToGet;
     }
 
-    public User updateUser(int id, UserDTO user)
+    public void updateUser(int id, UserDTO user)//?? daca vrem sa schimbam doar parola, email-ul, sau economia
     {
-        throw new NotImplementedException();
+        User userToUpdate = _context.Users.FirstOrDefault(u => u.Id == id);
+        userToUpdate.UserName = user.userName ?? userToUpdate.UserName;
+        userToUpdate.Email = user.Email ?? userToUpdate.Email;
+        userToUpdate.Password = user.Password ?? userToUpdate.Password;
+        userToUpdate.CurrencyId = user.CurrencyId ?? userToUpdate.CurrencyId;
+        _context.SaveChanges();
     }
+
+    public User FindUserByUNameAndPass(string userName, string password){
+        User user = _context.Users.FirstOrDefault(u => u.UserName == userName && u.Password == password);
+        return user;
+    }
+    
 }
