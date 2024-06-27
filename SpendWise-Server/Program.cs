@@ -1,6 +1,9 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
+using Serilog.Events;
+using Serilog.Formatting.Json;
 using SpendWise_Server.Business;
 using SpendWise_Server.Business.Interfaces;
 using SpendWise_Server.Business.Services;
@@ -10,7 +13,16 @@ using SpendWise_Server.Repos.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+//Creting the logger
+Log.Logger = new LoggerConfiguration()
+                            .WriteTo.Console()
+                            .WriteTo.File(new JsonFormatter(),
+                                          "important.json",
+                                          restrictedToMinimumLevel: LogEventLevel.Warning)
+                            .WriteTo.File("all-.logs",
+                                          rollingInterval: RollingInterval.Day)
+                            .MinimumLevel.Debug()
+                            .CreateLogger();
 
 
 builder.Services.AddAuthentication(option => {

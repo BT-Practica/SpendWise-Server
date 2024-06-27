@@ -1,0 +1,2 @@
+{"Timestamp":"2024-06-27T14:06:49.4677630+03:00","Level":"Error","MessageTemplate":"Eroare in UsersController.GetUser: User not found","TraceId":"0727be33e76061cfeae64df851a13e10","SpanId":"c60dce02b3c05d29"}
+{"Timestamp":"2024-06-27T14:08:37.6321930+03:00","Level":"Error","MessageTemplate":"Eroare in UsersController.GetUser: User not found","TraceId":"03f401c9fb6954fe0fcea87f7263db14","SpanId":"e9aedc993d157050"}

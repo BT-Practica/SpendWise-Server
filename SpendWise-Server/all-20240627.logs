@@ -1,0 +1,8 @@
+2024-06-27 13:53:33.597 +03:00 [INF] The log is working
+2024-06-27 13:56:43.214 +03:00 [INF] The log is working
+2024-06-27 13:57:51.376 +03:00 [INF] The log is working
+2024-06-27 13:59:15.299 +03:00 [INF] The log is working
+2024-06-27 14:06:48.607 +03:00 [INF] The log is working
+2024-06-27 14:06:49.467 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-27 14:08:36.773 +03:00 [INF] The log is working
+2024-06-27 14:08:37.632 +03:00 [ERR] Eroare in UsersController.GetUser: User not found

@@ -22,6 +22,8 @@ public class UserService : IUserService
         if(user == null){
             throw new NullReferenceException("User is null");
         }
+        //to hash the password
+        //bcrypt.net
         _userRepository.createUser(user);
     }
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using SpendWise_Server.Business.Interfaces;
 
 namespace SpendWise_Server.Controllers;
@@ -16,17 +17,20 @@ public class UsersController : ControllerBase
     [HttpGet("GetUser/{userId}")]
     public async Task<IActionResult> GetUser(int userId)
     {
+        Log.Information("The log is working");
         try{
             var user = _userService.getUserById(userId);
             return Ok(user);
         }
-        catch (InvalidDataException)
+        catch (InvalidDataException e)
         {
+            Log.Error($"Eroare in UsersController.GetUser: {e.Message}");
             return BadRequest();
         }
-        catch (KeyNotFoundException)
+        catch (KeyNotFoundException e)
         {
-            return BadRequest();
+            Log.Error($"Eroare in UsersController.GetUser: {e.Message}");
+            return NotFound();
         }
     }
 
