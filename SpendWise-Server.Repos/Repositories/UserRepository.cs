@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs;
 using SpendWise_Server.Repos.DataLayer;
@@ -13,13 +8,15 @@ namespace SpendWise_Server.Repos.Repositories;
 public class UserRepository : IUserRepository
 {
     private readonly DataContext _context;
-    public UserRepository(DataContext context){
+    public UserRepository(DataContext context)
+    {
         _context = context;
     }
     public void createUser(UserRegisterDTO user)
     {
 
-        User newUser = new User(){
+        User newUser = new User()
+        {
             UserName = user.username,
             Password = user.password,
             Email = user.email,
@@ -53,9 +50,10 @@ public class UserRepository : IUserRepository
         _context.SaveChanges();
     }
 
-    public User FindUserByUNameAndPass(UserLoginDTO user){
+    public User FindUserByUNameAndPass(UserLoginDTO user)
+    {
         User foundUser = _context.Users.FirstOrDefault(u => u.UserName == user.userName && u.Password == user.Password);
         return foundUser;
     }
-    
+
 }

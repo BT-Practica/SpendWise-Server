@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs.EconomyDtos;
 using SpendWise_Server.Repos.DataLayer;
@@ -14,11 +10,12 @@ public class EconomyRepository : IEconomyRepository
     public readonly DataContext _dataContext;
     public EconomyRepository(DataContext dataContext)
     {
-        _dataContext = dataContext;        
+        _dataContext = dataContext;
     }
     public void AddEconomy(EconomyDto economiesDto)
     {
-        Economies economy = new Economies{
+        Economies economy = new Economies
+        {
             Amount = economiesDto.Amount,
             RegistrationDate = DateTime.Now
         };

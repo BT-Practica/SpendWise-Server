@@ -18,7 +18,8 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> GetUser(int userId)
     {
         Log.Information("The log is working");
-        try{
+        try
+        {
             var user = _userService.getUserById(userId);
             return Ok(user);
         }

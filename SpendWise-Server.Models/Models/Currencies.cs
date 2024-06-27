@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 using SpendWise_Server.Models.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace SpendWise_Server.Models;
 
