@@ -18,7 +18,7 @@ public class TokenService : ITokenService
     {
         _configuration = configuration;
     }
-    public string CreateToken(string username , string email)//UserDto
+    public string CreateToken(string username)
     {
         var key = _configuration["Jwt:Key"];
         var keyBytes = Encoding.UTF8.GetBytes(key);
@@ -27,8 +27,7 @@ public class TokenService : ITokenService
         {
             Subject = new ClaimsIdentity(new Claim[]
             {
-                new Claim(ClaimTypes.NameIdentifier, username),//to add claims(username, email...)
-                new Claim(ClaimTypes.Email, email) //To add email
+                new Claim(ClaimTypes.NameIdentifier, username),
             }),
             Expires = DateTime.UtcNow.AddMinutes(30),
             SigningCredentials = new SigningCredentials(

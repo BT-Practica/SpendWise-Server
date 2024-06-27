@@ -17,4 +17,6 @@ public class UserRegisterDTO
     [Required]
     [EmailAddress]
     public string? email {get; set;}
+    [Required]
+    public int CurrencyId { get; set; }
 }
