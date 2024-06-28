@@ -14,10 +14,12 @@ public class UserRepository : IUserRepository
     }
     public void createUser(UserRegisterDTO user)
     {
-        if(_context.Users.FirstOrDefault(u => u.UserName == user.username) != null){
+        if (_context.Users.FirstOrDefault(u => u.UserName == user.username) != null)
+        {
             throw new ArgumentException("Username already exists");
         }
-        User newUser = new User(){
+        User newUser = new User()
+        {
             UserName = user.username,
             Password = user.password,
             Email = user.email,
@@ -51,28 +53,33 @@ public class UserRepository : IUserRepository
         _context.SaveChanges();
     }
 
-    public void UpdatePassword(int id, string password){
+    public void UpdatePassword(int id, string password)
+    {
         User userToUpdate = _context.Users.FirstOrDefault(u => u.Id == id);
         userToUpdate.Password = password;
         _context.SaveChanges();
     }
-    public void UpdateEmail(int id, string email){
+    public void UpdateEmail(int id, string email)
+    {
         User userToUpdate = _context.Users.FirstOrDefault(u => u.Id == id);
         userToUpdate.Email = email;
         _context.SaveChanges();
     }
-    public void UpdateCurrency(int id, int CurrencyId){
+    public void UpdateCurrency(int id, int CurrencyId)
+    {
         User userToUpdate = _context.Users.FirstOrDefault(u => u.Id == id);
         userToUpdate.CurrencyId = CurrencyId;
         _context.SaveChanges();
     }
 
-    public User FindUserByUNameAndPass(UserLoginDTO user){
+    public User FindUserByUNameAndPass(UserLoginDTO user)
+    {
         User foundUser = _context.Users.FirstOrDefault(u => u.UserName == user.userName && u.Password == user.Password);
         return foundUser;
     }
-    
-    public User FindUserByUName(string userName){
+
+    public User FindUserByUName(string userName)
+    {
         User foundUser = _context.Users.FirstOrDefault(u => u.UserName == userName);
         return foundUser;
     }

@@ -58,3 +58,6 @@
 2024-06-28 13:46:12.627 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid password
 2024-06-28 13:46:47.354 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid passworD
 2024-06-28 13:48:26.372 +03:00 [ERR] Eroare in AuthController.Login: Wrong password
+2024-06-28 14:04:44.783 +03:00 [INF] The log is working
+2024-06-28 14:16:23.083 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-28 14:19:57.417 +03:00 [INF] The log is working

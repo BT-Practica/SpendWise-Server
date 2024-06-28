@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SpendWise_Server.Models;
 using SpendWise_Server.Models.Models;
 
@@ -21,7 +20,7 @@ namespace SpendWise_Server.Repos.DataLayer
         {
             modelBuilder.Entity<User>().ToTable("Users").HasKey(k => k.Id);
 
-            modelBuilder.Entity<Exchange>().HasKey(cd => new {cd.FirstCurrencyId, cd.SecondCurrencyId});
+            modelBuilder.Entity<Exchange>().HasKey(cd => new { cd.FirstCurrencyId, cd.SecondCurrencyId });
 
             modelBuilder.Entity<Incomes>()
                 .HasOne(i => i.User)
@@ -40,7 +39,7 @@ namespace SpendWise_Server.Repos.DataLayer
                 .WithMany(c => c.FirstExchanges)
                 .HasForeignKey(e => e.FirstCurrencyId)
                 .OnDelete(DeleteBehavior.NoAction);
-            
+
 
             modelBuilder.Entity<Exchange>()
                 .HasOne(e => e.SecondCurrency)
