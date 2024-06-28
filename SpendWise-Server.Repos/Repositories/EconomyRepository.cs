@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs.EconomyDtos;
 using SpendWise_Server.Repos.DataLayer;
@@ -7,34 +8,48 @@ namespace SpendWise_Server.Repos.Repositories;
 
 public class EconomyRepository : IEconomyRepository
 {
-    public readonly DataContext _dataContext;
-    public EconomyRepository(DataContext dataContext)
+    public readonly DataContext _context;
+    public EconomyRepository(DataContext context)
     {
-        _dataContext = dataContext;
+        _context = context;
     }
-    public void AddEconomy(EconomyDto economiesDto)
+    public async Task AddEconomy(EconomyDto economiesDto)
     {
         Economies economy = new Economies
         {
             Amount = economiesDto.Amount,
             RegistrationDate = DateTime.Now
         };
-        _dataContext.Add(economy);
-        _dataContext.SaveChanges();
+        await _context.AddAsync(economy);
+        await _context.SaveChangesAsync();
     }
 
-    public void DeleteEconomy()
+    public async Task DeleteEconomy(int id)
     {
-        throw new NotImplementedException();
+        var economies = await _context.Economies.FirstOrDefaultAsync(e => e.Id == id);
+        _context.Remove(id);
+        await _context.SaveChangesAsync();
     }
 
-    public Economies GetEconomy()
+    public List<Economies> GetAllEconomies()
     {
-        throw new NotImplementedException();
+        var economies = _context.Economies.ToList();
+        return economies;
     }
 
-    public void UpdateEconomy()
+    public Economies GetEconomy(int id)
     {
-        throw new NotImplementedException();
+        var economies = _context.Economies.FirstOrDefault(e => e.Id == id);
+        return economies;
+    }
+
+    public async Task UpdateEconomy(EconomyDto economyDto, int id)
+    {
+        Economies economies = new Economies();
+        economies.Amount = economyDto.Amount;
+        economies.RegistrationDate = DateTime.Now;
+
+        _context.Update(economies);
+        await _context.SaveChangesAsync(true);
     }
 }

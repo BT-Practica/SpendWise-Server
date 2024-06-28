@@ -1,12 +1,10 @@
-using System.Reflection.Metadata;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Serilog;
 using Serilog;
 using SpendWise_Server.Business.Interfaces;
 using SpendWise_Server.Models.DTOs;
 using SpendWise_Server.Repos.Interfaces;
+using System.Security.Claims;
 
 namespace SpendWise_Server.Controllers;
 
@@ -64,7 +62,8 @@ public class AuthController : ControllerBase
 
     [Authorize]
     [HttpPost("")]
-    public async Task<IActionResult> Dummy(){
+    public async Task<IActionResult> Dummy()
+    {
         var a = this.HttpContext.User.Claims.Where(u => u.Type == ClaimTypes.NameIdentifier).FirstOrDefault().Value;
         return Ok(a);
     }

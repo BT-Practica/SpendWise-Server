@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SpendWise_Server.Business.Services;
 
@@ -20,12 +16,14 @@ public class CurrenciesController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetCurrencyById(int id){
+    public async Task<IActionResult> GetCurrencyById(int id)
+    {
         var currency = await _currenciesService.GetCurrency(id);
         return Ok(currency);
     }
     [HttpGet]
-    public async Task<IActionResult> GetCurrencies(){
+    public async Task<IActionResult> GetCurrencies()
+    {
         var listOfCurrencies = await _currenciesService.GetCurrencies();
         return Ok(listOfCurrencies);
     }
