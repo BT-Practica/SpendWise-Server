@@ -9,6 +9,8 @@ using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs;
 using SpendWise_Server.Repos.Interfaces;
 
+using BCrypt.Net;
+
 namespace SpendWise_Server.Business.Services;
 
 public class UserService : IUserService
@@ -27,6 +29,9 @@ public class UserService : IUserService
         }
         //to hash the password
         user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
+        
+        // string hashpass = BCrypt.Net.BCrypt.HashPassword(user.password); 
+        // UserRegisterDTO newUser = new UserRegisterDTO(user.email, user...,, hashpass);    
         _userRepository.createUser(user);
     }
 

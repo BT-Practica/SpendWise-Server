@@ -25,4 +25,5 @@ public class User
     public Currencies? Currency { get; set; }
     [Required]
     public int CurrencyId { get; set; }
+
 }
