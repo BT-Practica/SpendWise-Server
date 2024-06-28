@@ -22,8 +22,15 @@ public class AuthController : ControllerBase
         //In repo to add user in dbContext.done
         //to call UserService.AddUser.done
         //Username to be unique?.done
-        _userService.createUser(user);
-        return Ok();
+        try{
+            _userService.createUser(user);
+            Log.Information($"User:{user} created");
+            return Ok();
+        }
+        catch(ArgumentException e){
+            Log.Error($"Eroare in AuthController.Register: {e.Message}");
+            return BadRequest(e.Message);
+        }
     }
 
     [HttpPost("Login")]
@@ -36,13 +43,13 @@ public class AuthController : ControllerBase
             _userService.FindUserByUNameAndPass(user);
             return Ok(_tokenService.CreateToken(user.userName));
         }
-        catch (InvalidDataException e)
-        {
-            return BadRequest();
-        }
-        catch (KeyNotFoundException)
-        {
+        catch(KeyNotFoundException e){
+            Log.Error($"Eroare in AuthController.Login: {e.Message}");
             return NotFound("User not found");
+        }
+        catch(InvalidDataException e){
+            Log.Error($"Eroare in AuthController.Login: {e.Message}");
+            return BadRequest("Wrong password");
         }
     }
 }

@@ -11,12 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 //Creting the logger
 Log.Logger = new LoggerConfiguration()
-                            .WriteTo.Console()
                             .WriteTo.File(new JsonFormatter(),
                                           "important.json",
                                           restrictedToMinimumLevel: LogEventLevel.Warning)
                             .WriteTo.File("all-.logs",
                                           rollingInterval: RollingInterval.Day)
+                            //.WriteTo.MSSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
                             .MinimumLevel.Debug()
                             .CreateLogger();
 

@@ -14,9 +14,10 @@ public class UserRepository : IUserRepository
     }
     public void createUser(UserRegisterDTO user)
     {
-
-        User newUser = new User()
-        {
+        if(_context.Users.FirstOrDefault(u => u.UserName == user.username) != null){
+            throw new ArgumentException("Username already exists");
+        }
+        User newUser = new User(){
             UserName = user.username,
             Password = user.password,
             Email = user.email,
@@ -55,5 +56,9 @@ public class UserRepository : IUserRepository
         User foundUser = _context.Users.FirstOrDefault(u => u.UserName == user.userName && u.Password == user.Password);
         return foundUser;
     }
-
+    
+    public User FindUserByUName(string userName){
+        User foundUser = _context.Users.FirstOrDefault(u => u.UserName == userName);
+        return foundUser;
+    }
 }

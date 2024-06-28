@@ -10,5 +10,6 @@ namespace SpendWise_Server.Repos.Interfaces
         public void updateUser(int id, UserDTO user);
         public void deleteUser(int id);
         public User FindUserByUNameAndPass(UserLoginDTO user);
+        public User FindUserByUName(string userName);
     }
 }

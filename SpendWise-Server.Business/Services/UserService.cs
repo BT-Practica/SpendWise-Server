@@ -20,7 +20,7 @@ public class UserService : IUserService
             throw new NullReferenceException("User is null");
         }
         //to hash the password
-        //bcrypt.net
+        user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
         _userRepository.createUser(user);
     }
 
@@ -62,20 +62,22 @@ public class UserService : IUserService
         {
             throw new NullReferenceException("User is null");
         }
+        //hash password
+        user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
         _userRepository.updateUser(id, user);
 
     }
 
-    public User FindUserByUNameAndPass(UserLoginDTO user)
-    {
-        if (user.userName == null || user.Password == null)
-        {
-            throw new NullReferenceException("UserName or Password is null");
-        }
-        User foundUser = _userRepository.FindUserByUNameAndPass(user);
-        if (user == null)
-        {
+
+    public User FindUserByUNameAndPass(UserLoginDTO user){
+        //hash password first
+        User foundUser = _userRepository.FindUserByUName(user.userName);
+        if(foundUser == null){
             throw new KeyNotFoundException("User not found");
+        }
+        bool verifiedPassword = BCrypt.Net.BCrypt.Verify(user.Password, foundUser.Password);
+        if(verifiedPassword == false){
+            throw new InvalidDataException("Wrong password");
         }
         return foundUser;
     }
