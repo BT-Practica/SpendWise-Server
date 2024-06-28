@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using SpendWise_Server.Business.Interfaces;
 
@@ -35,17 +36,40 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpPost("AddUser")]
-    public async Task<IActionResult> AddUser() //dto
+    [HttpPut("UpdatePassword")]
+    public async Task<IActionResult> UpdatePassword(int id,[FromBody] string password)
     {
-        //model
-        return Ok();
+        try{
+            _userService.UpdatePassword(id, password);
+            return Ok();
+        }catch(InvalidDataException e){
+            Log.Error($"Eroare in UsersController.UpdatePassword: {e.Message}");
+            return BadRequest();
+        }
     }
 
-    [HttpPut("UpdateUser")]
-    public async Task<IActionResult> UpdateUser()
+    [HttpPut("UpdateEmail")]
+    public async Task<IActionResult> UpdateEmail(int id,[FromBody][EmailAddress] string email)
     {
-        return Ok();
+        try{
+            _userService.UpdateEmail(id, email);
+            return Ok();
+        }catch(InvalidDataException e){
+            Log.Error($"Eroare in UsersController.UpdateEmail: {e.Message}");
+            return BadRequest();
+        }
+    }
+
+    [HttpPut("UpdateEmail")]
+    public async Task<IActionResult> UpdateCurrency(int id, [FromBody]int CurrencyId)
+    {
+        try{
+            _userService.UpdateCurrency(id, CurrencyId);
+            return Ok();
+        }catch(InvalidDataException e){
+            Log.Error($"Eroare in UsersController.UpdateCurrency: {e.Message}");
+            return BadRequest();
+        }
     }
 
     [HttpDelete("RemoveUser")]
