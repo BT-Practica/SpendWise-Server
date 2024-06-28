@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using SpendWise_Server.Repos.DataLayer;
 using SpendWise_Server.Repos.Interfaces;
 using SpendWise_Server.Repos.Repositories;
@@ -14,10 +15,13 @@ public static class ExtensionMethods
     {
         services.AddDbContext<DataContext>(options => options.
         UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
-        x => x.MigrationsAssembly("SpendWise-Server.Repos")));
+        x => x.MigrationsAssembly("SpendWise-Server.Repos")), ServiceLifetime.Transient);
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<DataContext>();
         services.AddScoped<IIncome_CategoriesRepository, Income_CategoriesRepository>();
+        services.AddScoped<ICurrencyRepository, CurrencyRepository>();
+        services.AddScoped<IEconomyRepository, EconomyRepository>();
+        services.AddLogging();
     }
 
 }
