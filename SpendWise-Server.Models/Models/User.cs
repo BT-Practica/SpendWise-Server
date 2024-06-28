@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SpendWise_Server.Models.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace SpendWise_Server.Models;
@@ -25,4 +26,6 @@ public class User
     public Currencies? Currency { get; set; }
     [Required]
     public int CurrencyId { get; set; }
+    public ICollection<User_Categories> User_Categories { get; set; } = [];
+    public ICollection<Costs> Costs {get; set;} = [];
 }

@@ -55,19 +55,19 @@ public class UsersController : ControllerBase
     {
         try{
             _userService.UpdateEmail(userData.id, userData.data);
-            return Ok();
+            return Ok("Email Updated");
         }catch(InvalidDataException e){
             Log.Error($"Eroare in UsersController.UpdateEmail: {e.Message}");
-            return BadRequest();
+            return BadRequest(e.Message);
         }
     }
 
     [HttpPut("UpdateCurrency")]
-    public async Task<IActionResult> UpdateCurrency(int id, [FromBody]int CurrencyId)
+    public async Task<IActionResult> UpdateCurrency([FromBody]ChangeUserCurrencyDTO userData)
     {
         try{
-            _userService.UpdateCurrency(id, CurrencyId);
-            return Ok();
+            _userService.UpdateCurrency(userData.id, userData.currencyId);
+            return Ok("Currency Updated");
         }catch(InvalidDataException e){
             Log.Error($"Eroare in UsersController.UpdateCurrency: {e.Message}");
             return BadRequest();

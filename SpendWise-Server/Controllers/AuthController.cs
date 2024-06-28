@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using Serilog;
 using SpendWise_Server.Business.Interfaces;
 using SpendWise_Server.Models.DTOs;
@@ -56,5 +60,12 @@ public class AuthController : ControllerBase
             Log.Error($"Eroare in AuthController.Login: {e.Message}");
             return BadRequest("Wrong password");
         }
+    }
+
+    [Authorize]
+    [HttpPost("")]
+    public async Task<IActionResult> Dummy(){
+        var a = this.HttpContext.User.Claims.Where(u => u.Type == ClaimTypes.NameIdentifier).FirstOrDefault().Value;
+        return Ok(a);
     }
 }

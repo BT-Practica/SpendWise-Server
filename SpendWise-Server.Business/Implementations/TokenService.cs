@@ -29,6 +29,8 @@ public class TokenService : ITokenService
             {
                 new Claim(ClaimTypes.NameIdentifier, username),
             }),
+            Audience = _configuration["Jwt:Audience"],
+            Issuer = _configuration["Jwt:Issuer"],
             Expires = DateTime.UtcNow.AddMinutes(30),
             SigningCredentials = new SigningCredentials(
                                 new SymmetricSecurityKey(keyBytes),
@@ -36,5 +38,10 @@ public class TokenService : ITokenService
         };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
+    }
+
+    public int DecodeJWT(string jwt)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -9,6 +9,8 @@ using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs;
 using SpendWise_Server.Repos.Interfaces;
 
+using BCrypt.Net;
+
 namespace SpendWise_Server.Business.Services;
 
 public class UserService : IUserService
@@ -27,6 +29,9 @@ public class UserService : IUserService
         }
         //to hash the password
         user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
+        
+        // string hashpass = BCrypt.Net.BCrypt.HashPassword(user.password); 
+        // UserRegisterDTO newUser = new UserRegisterDTO(user.email, user...,, hashpass);    
         _userRepository.createUser(user);
     }
 
@@ -86,9 +91,12 @@ public class UserService : IUserService
         password = BCrypt.Net.BCrypt.HashPassword(password);
         _userRepository.UpdatePassword(id, password);
     }
-    public void UpdateEmail(int id, [EmailAddress] string email){
+    public void UpdateEmail(int id, string email){
         if(id <= 0 || _userRepository.getUserById(id) == null){
             throw new InvalidDataException("Invalid ID");
+        }
+        if(!Regex.IsMatch(email, "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
+            throw new InvalidDataException("Invalid Email");
         }
         _userRepository.UpdateEmail(id, email);
 
@@ -100,6 +108,7 @@ public class UserService : IUserService
         if(CurrencyId <= 0){//getCurrencyById and verify if null
             _userRepository.UpdateCurrency(id, CurrencyId);
         }
+        _userRepository.UpdateCurrency(id, CurrencyId);
     }
 
     public User FindUserByUNameAndPass(UserLoginDTO user){

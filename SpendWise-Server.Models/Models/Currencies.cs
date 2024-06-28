@@ -16,4 +16,5 @@ public class Currencies
     public ICollection<User> Users { get; set; } = [];
     public ICollection<Exchange> FirstExchanges { get; set; } = [];
     public ICollection<Exchange> SecondExchanges { get; set; } = [];
+    public ICollection<Costs> Costs { get; set; } = [];
 }
