@@ -1,14 +1,10 @@
-using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Json;
 using SpendWise_Server.Business;
-using SpendWise_Server.Business.Interfaces;
-using SpendWise_Server.Business.Services;
-using SpendWise_Server.Repos.Interfaces;
-using SpendWise_Server.Repos.Repositories;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,11 +21,13 @@ Log.Logger = new LoggerConfiguration()
                             .CreateLogger();
 
 
-builder.Services.AddAuthentication(option => {
-        option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
-    .AddJwtBearer(JwtOptions => {
+builder.Services.AddAuthentication(option =>
+{
+    option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(JwtOptions =>
+    {
         var key = builder.Configuration["Jwt:Key"];
         var keyBytes = Encoding.ASCII.GetBytes(key);
         JwtOptions.SaveToken = true;

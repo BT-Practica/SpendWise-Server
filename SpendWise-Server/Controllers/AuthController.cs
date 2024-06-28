@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Serilog;
 using SpendWise_Server.Business.Interfaces;
 using SpendWise_Server.Models.DTOs;
 using SpendWise_Server.Repos.Interfaces;
@@ -12,7 +11,8 @@ public class AuthController : ControllerBase
 {
     private readonly ITokenService _tokenService;
     private readonly IUserService _userService;
-    public AuthController(ITokenService tokenService, IUserService userService){
+    public AuthController(ITokenService tokenService, IUserService userService)
+    {
         _tokenService = tokenService;
         _userService = userService;
     }
@@ -34,11 +34,12 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("Login")]
-    public async Task<IActionResult> Login([FromBody] UserLoginDTO user) 
+    public async Task<IActionResult> Login([FromBody] UserLoginDTO user)
     {
         //Validate user: in repo to find the user with same username and password.done
         //in business to verify uname,password; if user exists return jwt.done
-        try{
+        try
+        {
             _userService.FindUserByUNameAndPass(user);
             return Ok(_tokenService.CreateToken(user.userName));
         }

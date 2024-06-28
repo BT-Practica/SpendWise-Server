@@ -1,10 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
-using Microsoft.EntityFrameworkCore;  
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace SpendWise_Server.Models;
 
-[Index(nameof(UserName), nameof(Email), IsUnique=true)]
+[Index(nameof(UserName), nameof(Email), IsUnique = true)]
 public class User
 {
     [Key]
@@ -21,9 +20,9 @@ public class User
     [Required]
     public DateTime CreatedDate { get; set; }
     public ICollection<Economies> Economies { get; set; } = [];
-    public ICollection<Incomes> Incomes {get; set;} = [];     
+    public ICollection<Incomes> Incomes { get; set; } = [];
     [Required]
-    public Currencies? Currency {get; set;}
+    public Currencies? Currency { get; set; }
     [Required]
     public int CurrencyId { get; set; }
 }

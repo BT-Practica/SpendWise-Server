@@ -14,8 +14,8 @@ public static class BusinessRegistrations
     {
         services.RegisterRepo(configuration);
         services.AddScoped<ITokenService, TokenService>();
-        services.AddScoped<IUserService,UserService>();
-        
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IIncome_CategoriesService, Income_CategoriesService>();
     }
-    
+
 }

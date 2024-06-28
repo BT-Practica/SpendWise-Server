@@ -15,8 +15,9 @@ public static class ExtensionMethods
         services.AddDbContext<DataContext>(options => options.
         UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
         x => x.MigrationsAssembly("SpendWise-Server.Repos")));
-        services.AddScoped<IUserRepository,UserRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<DataContext>();
+        services.AddScoped<IIncome_CategoriesRepository, Income_CategoriesRepository>();
     }
 
 }
