@@ -1,3 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using SpendWise_Server.Business.Interfaces;
 using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs;
@@ -68,6 +74,31 @@ public class UserService : IUserService
 
     }
 
+    public void UpdatePassword(int id, string password){
+        if(id <= 0 || _userRepository.getUserById(id) == null){
+            throw new InvalidDataException("Invalid ID");
+        }
+        if(Regex.IsMatch(password,"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,}$")){
+            throw new InvalidDataException("Invalid password");
+        }
+        password = BCrypt.Net.BCrypt.HashPassword(password);
+        _userRepository.UpdatePassword(id, password);
+    }
+    public void UpdateEmail(int id, [EmailAddress] string email){
+        if(id <= 0 || _userRepository.getUserById(id) == null){
+            throw new InvalidDataException("Invalid ID");
+        }
+        _userRepository.UpdateEmail(id, email);
+
+    }
+    public void UpdateCurrency(int id, int CurrencyId){
+        if(id <= 0 || _userRepository.getUserById(id) == null){
+            throw new InvalidDataException("Invalid ID");
+        }
+        if(CurrencyId <= 0){//getCurrencyById and verify if null
+            _userRepository.UpdateCurrency(id, CurrencyId);
+        }
+    }
 
     public User FindUserByUNameAndPass(UserLoginDTO user){
         //hash password first

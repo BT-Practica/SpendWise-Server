@@ -51,8 +51,23 @@ public class UserRepository : IUserRepository
         _context.SaveChanges();
     }
 
-    public User FindUserByUNameAndPass(UserLoginDTO user)
-    {
+    public void UpdatePassword(int id, string password){
+        User userToUpdate = _context.Users.FirstOrDefault(u => u.Id == id);
+        userToUpdate.Password = password;
+        _context.SaveChanges();
+    }
+    public void UpdateEmail(int id, string email){
+        User userToUpdate = _context.Users.FirstOrDefault(u => u.Id == id);
+        userToUpdate.Email = email;
+        _context.SaveChanges();
+    }
+    public void UpdateCurrency(int id, int CurrencyId){
+        User userToUpdate = _context.Users.FirstOrDefault(u => u.Id == id);
+        userToUpdate.CurrencyId = CurrencyId;
+        _context.SaveChanges();
+    }
+
+    public User FindUserByUNameAndPass(UserLoginDTO user){
         User foundUser = _context.Users.FirstOrDefault(u => u.UserName == user.userName && u.Password == user.Password);
         return foundUser;
     }
