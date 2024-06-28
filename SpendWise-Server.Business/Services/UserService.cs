@@ -32,7 +32,7 @@ public class UserService : IUserService
 
     public void deleteUser(int id)
     {
-        if (id <= 0)
+        if (id <= 0 || _userRepository.getUserById(id) == null)
         {
             throw new InvalidDataException("Invalid ID");
         }
@@ -50,7 +50,7 @@ public class UserService : IUserService
         {
             throw new InvalidDataException("Invalid ID");
         }
-        var user = _userRepository.getUserById(id);
+        User user = _userRepository.getUserById(id);
         if (user == null)
         {
             throw new KeyNotFoundException("User not found");
@@ -75,10 +75,12 @@ public class UserService : IUserService
     }
 
     public void UpdatePassword(int id, string password){
+        Console.WriteLine(id);
+        Console.WriteLine(_userRepository.getUserById(id) == null);
         if(id <= 0 || _userRepository.getUserById(id) == null){
             throw new InvalidDataException("Invalid ID");
         }
-        if(Regex.IsMatch(password,"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,}$")){
+        if(!Regex.IsMatch(password,"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,}$")){
             throw new InvalidDataException("Invalid password");
         }
         password = BCrypt.Net.BCrypt.HashPassword(password);

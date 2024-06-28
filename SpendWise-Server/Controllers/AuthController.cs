@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using SpendWise_Server.Business.Interfaces;
 using SpendWise_Server.Models.DTOs;
 using SpendWise_Server.Repos.Interfaces;

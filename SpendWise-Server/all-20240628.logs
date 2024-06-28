@@ -1,0 +1,60 @@
+2024-06-28 11:29:59.815 +03:00 [INF] The log is working
+2024-06-28 11:30:00.263 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:32:44.112 +03:00 [INF] The log is working
+2024-06-28 11:32:44.584 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:33:29.808 +03:00 [INF] The log is working
+2024-06-28 11:33:29.824 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:33:53.189 +03:00 [INF] The log is working
+2024-06-28 11:33:53.641 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:36:18.523 +03:00 [INF] The log is working
+2024-06-28 11:36:18.544 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:36:43.167 +03:00 [ERR] Eroare in AuthController.Login: User not found
+2024-06-28 11:37:00.842 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-28 11:37:44.498 +03:00 [INF] The log is working
+2024-06-28 11:37:44.504 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:37:57.984 +03:00 [INF] The log is working
+2024-06-28 11:37:57.988 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:39:18.633 +03:00 [INF] The log is working
+2024-06-28 11:39:18.638 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:39:39.513 +03:00 [INF] The log is working
+2024-06-28 11:39:39.517 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:40:25.734 +03:00 [INF] The log is working
+2024-06-28 11:40:25.740 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:40:46.083 +03:00 [INF] The log is working
+2024-06-28 11:40:46.087 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:41:05.170 +03:00 [INF] The log is working
+2024-06-28 11:41:05.174 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:41:36.009 +03:00 [INF] The log is working
+2024-06-28 11:41:36.012 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:43:04.866 +03:00 [INF] The log is working
+2024-06-28 11:43:04.873 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:44:02.988 +03:00 [INF] The log is working
+2024-06-28 11:44:02.998 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:44:27.053 +03:00 [INF] The log is working
+2024-06-28 11:44:27.493 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:44:51.239 +03:00 [INF] The log is working
+2024-06-28 11:44:51.249 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:45:37.763 +03:00 [INF] The log is working
+2024-06-28 11:45:37.787 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:45:52.101 +03:00 [INF] The log is working
+2024-06-28 11:45:52.107 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
+2024-06-28 11:49:02.863 +03:00 [INF] The log is working
+2024-06-28 11:55:11.586 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid password
+2024-06-28 11:57:31.395 +03:00 [INF] The log is working
+2024-06-28 11:59:21.847 +03:00 [INF] The log is working
+2024-06-28 12:04:36.690 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid ID
+2024-06-28 12:06:39.009 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid ID
+2024-06-28 12:06:54.335 +03:00 [INF] The log is working
+2024-06-28 12:08:12.638 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid ID
+2024-06-28 12:09:37.845 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid ID
+2024-06-28 12:09:55.802 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid ID
+2024-06-28 12:10:07.526 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid ID
+2024-06-28 12:10:08.409 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid ID
+2024-06-28 12:12:10.136 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid password
+2024-06-28 13:28:49.244 +03:00 [INF] The log is working
+2024-06-28 13:45:27.838 +03:00 [INF] The log is working
+2024-06-28 13:45:48.209 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid password
+2024-06-28 13:46:02.609 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid password
+2024-06-28 13:46:12.627 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid password
+2024-06-28 13:46:47.354 +03:00 [ERR] Eroare in UsersController.UpdatePassword: Invalid passworD
+2024-06-28 13:48:26.372 +03:00 [ERR] Eroare in AuthController.Login: Wrong password
