@@ -1,3 +1,5 @@
+using System.Security;
+using Microsoft.EntityFrameworkCore;
 using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs;
 using SpendWise_Server.Repos.DataLayer;
@@ -37,9 +39,9 @@ public class UserRepository : IUserRepository
         _context.SaveChanges();
     }
 
-    public User getUserById(int id)
+    public async Task<User> getUserById(int id)
     {
-        User userToGet = _context.Users.FirstOrDefault(u => u.Id == id);
+        User userToGet = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
         return userToGet;
     }
 
@@ -65,9 +67,8 @@ public class UserRepository : IUserRepository
         userToUpdate.Email = email;
         _context.SaveChanges();
     }
-    public void UpdateCurrency(int id, int CurrencyId)
-    {
-        User userToUpdate = _context.Users.FirstOrDefault(u => u.Id == id);
+    public async Task UpdateCurrency(int id, int CurrencyId){
+        User userToUpdate = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
         userToUpdate.CurrencyId = CurrencyId;
         _context.SaveChanges();
     }

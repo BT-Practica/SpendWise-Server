@@ -14,7 +14,7 @@ public class CurrencyRepository : ICurrencyRepository
 {
     private readonly DataContext _dataContext;
     private readonly ILogger _logger;
-    public CurrencyRepository(DataContext dataContext, ILogger logger)
+    public CurrencyRepository(DataContext dataContext, ILogger<Currencies> logger)
     {
         _dataContext = dataContext;
         _logger = logger;

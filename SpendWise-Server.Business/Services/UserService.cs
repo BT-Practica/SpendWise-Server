@@ -10,16 +10,20 @@ using SpendWise_Server.Models.DTOs;
 using SpendWise_Server.Repos.Interfaces;
 
 using BCrypt.Net;
+using System.Security;
+using System.Runtime.CompilerServices;
 
 namespace SpendWise_Server.Business.Services;
 
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
+    private readonly ICurrencyRepository _currencyRepository;
 
-    public UserService(IUserRepository userRepository)
+    public UserService(IUserRepository userRepository, ICurrencyRepository currencyRepository)
     {
         _userRepository = userRepository;
+        _currencyRepository = currencyRepository;
     }
     public void createUser(UserRegisterDTO user)
     {
@@ -35,13 +39,13 @@ public class UserService : IUserService
         _userRepository.createUser(user);
     }
 
-    public void deleteUser(int id)
+    public async Task deleteUser(int id)
     {
         if (id <= 0 || _userRepository.getUserById(id) == null)
         {
             throw new InvalidDataException("Invalid ID");
         }
-        User userToDelete = _userRepository.getUserById(id);
+        User userToDelete = await _userRepository.getUserById(id);
         if (userToDelete == null)
         {
             throw new KeyNotFoundException("User not found");
@@ -49,13 +53,13 @@ public class UserService : IUserService
         _userRepository.deleteUser(id);
     }
 
-    public User getUserById(int id)
+    public async Task<User> getUserById(int id)
     {
         if (id <= 0)
         {
             throw new InvalidDataException("Invalid ID");
         }
-        User user = _userRepository.getUserById(id);
+        User user = await _userRepository.getUserById(id);
         if (user == null)
         {
             throw new KeyNotFoundException("User not found");
@@ -101,14 +105,15 @@ public class UserService : IUserService
         _userRepository.UpdateEmail(id, email);
 
     }
-    public void UpdateCurrency(int id, int CurrencyId){
-        if(id <= 0 || _userRepository.getUserById(id) == null){
+    public async Task UpdateCurrency(int id, int CurrencyId){
+        Console.WriteLine(CurrencyId);
+        if(id <= 0 || await _userRepository.getUserById(id) == null){
             throw new InvalidDataException("Invalid ID");
         }
-        if(CurrencyId <= 0){//getCurrencyById and verify if null
-            _userRepository.UpdateCurrency(id, CurrencyId);
+        if(CurrencyId <= 0 || await _currencyRepository.GetCurrency(CurrencyId) == null ){//getCurrencyById and verify if null
+            throw new InvalidDataException("Invalid CurrencyId");
         }
-        _userRepository.UpdateCurrency(id, CurrencyId);
+        await _userRepository.UpdateCurrency(id, CurrencyId);
     }
 
     public User FindUserByUNameAndPass(UserLoginDTO user){

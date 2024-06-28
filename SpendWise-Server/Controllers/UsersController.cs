@@ -23,7 +23,7 @@ public class UsersController : ControllerBase
         Log.Information("The log is working");
         try
         {
-            User user = _userService.getUserById(userId);
+            User user = await _userService.getUserById(userId);
             return Ok(user);
         }
         catch (InvalidDataException e)
@@ -66,7 +66,7 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> UpdateCurrency([FromBody]ChangeUserCurrencyDTO userData)
     {
         try{
-            _userService.UpdateCurrency(userData.id, userData.currencyId);
+            await _userService.UpdateCurrency(userData.id, userData.currencyId);
             return Ok("Currency Updated");
         }catch(InvalidDataException e){
             Log.Error($"Eroare in UsersController.UpdateCurrency: {e.Message}");
