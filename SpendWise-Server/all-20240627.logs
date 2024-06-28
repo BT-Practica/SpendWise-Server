@@ -11,3 +11,35 @@
 2024-06-27 14:31:22.775 +03:00 [ERR] Eroare in UsersController.GetUser: User not found
 2024-06-27 14:31:56.895 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
 2024-06-27 14:38:54.872 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 15:59:03.231 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-27 16:00:37.482 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-27 16:01:39.302 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 16:01:49.302 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 18:06:55.934 +03:00 [INF] The log is working
+2024-06-27 18:07:13.404 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-27 18:08:36.975 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-27 18:08:47.286 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 18:09:06.821 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 18:14:23.643 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 18:14:28.644 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 18:14:54.799 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 18:16:49.428 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 18:18:20.129 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 18:19:09.021 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 18:20:22.738 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 18:20:51.276 +03:00 [ERR] Eroare in AuthController.GetUser: User not found
+2024-06-27 18:46:25.161 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-27 18:48:12.151 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-27 18:57:17.237 +03:00 [ERR] Eroare in AuthController.Register: Username already exists
+2024-06-27 18:57:24.944 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-27 19:07:07.547 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-27 19:07:25.042 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-27 19:07:41.468 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-27 19:08:01.451 +03:00 [ERR] Eroare in AuthController.Login: User not found
+2024-06-27 19:08:08.661 +03:00 [ERR] Eroare in AuthController.Login: User not found
+2024-06-27 19:08:16.496 +03:00 [ERR] Eroare in AuthController.Login: User not found
+2024-06-27 19:08:40.818 +03:00 [ERR] Eroare in AuthController.Login: User not found
+2024-06-27 19:14:13.220 +03:00 [ERR] Eroare in AuthController.Login: User not found
+2024-06-27 19:14:53.815 +03:00 [ERR] Eroare in AuthController.Login: Wrong password
+2024-06-27 19:16:34.313 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-27 19:16:38.736 +03:00 [ERR] Eroare in AuthController.Login: Wrong password

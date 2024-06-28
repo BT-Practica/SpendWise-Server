@@ -20,7 +20,7 @@ Log.Logger = new LoggerConfiguration()
                                           restrictedToMinimumLevel: LogEventLevel.Warning)
                             .WriteTo.File("all-.logs",
                                           rollingInterval: RollingInterval.Day)
-                            .WriteTo.MSSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+                            //.WriteTo.MSSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
                             .MinimumLevel.Debug()
                             .CreateLogger();
 
