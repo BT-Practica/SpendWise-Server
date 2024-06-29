@@ -59,3 +59,4 @@
 {"Timestamp":"2024-06-28T13:46:12.6278390+03:00","Level":"Error","MessageTemplate":"Eroare in UsersController.UpdatePassword: Invalid password","TraceId":"51d8a9a0092201422e58e313aa766340","SpanId":"0fc279dc642bd268"}
 {"Timestamp":"2024-06-28T13:46:47.3549430+03:00","Level":"Error","MessageTemplate":"Eroare in UsersController.UpdatePassword: Invalid passworD","TraceId":"e5f60933f08d39b11b69b1a3a3a28bb8","SpanId":"8dc124769cb3464e"}
 {"Timestamp":"2024-06-28T13:48:26.3724310+03:00","Level":"Error","MessageTemplate":"Eroare in AuthController.Login: Wrong password","TraceId":"cc9f9834d2186894a7f2029bc6a62b67","SpanId":"8581c8016dfe15e7"}
+{"Timestamp":"2024-06-28T22:10:50.6518080+03:00","Level":"Error","MessageTemplate":"Eroare in ExpensesController.GetExpenseById: Expense not found","TraceId":"59443dcd2adbb3cf6b5cc25afd95e858","SpanId":"be2cf2c09dc93b01"}

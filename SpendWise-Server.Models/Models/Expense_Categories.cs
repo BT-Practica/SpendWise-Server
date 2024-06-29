@@ -15,5 +15,5 @@ public class Expense_Categories
     [MaxLength(75)]
     public string Name {get; set;}
     public ICollection<User_Categories> User_Categories{get; set;} = [];
-    public ICollection<Costs> Costs {get; set;} = [];
+    public ICollection<Expenses> Expenses {get; set;} = [];
 }

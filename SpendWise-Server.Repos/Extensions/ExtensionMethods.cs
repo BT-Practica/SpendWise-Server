@@ -17,6 +17,7 @@ public static class ExtensionMethods
         UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
         x => x.MigrationsAssembly("SpendWise-Server.Repos")), ServiceLifetime.Transient);
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IExpenseRepository,ExpenseRepository>();
         services.AddScoped<DataContext>();
         services.AddScoped<IIncome_CategoriesRepository, Income_CategoriesRepository>();
         services.AddScoped<ICurrencyRepository, CurrencyRepository>();

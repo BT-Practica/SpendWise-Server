@@ -27,5 +27,5 @@ public class User
     [Required]
     public int CurrencyId { get; set; }
     public ICollection<User_Categories> User_Categories { get; set; } = [];
-    public ICollection<Costs> Costs {get; set;} = [];
+    public ICollection<Expenses> Expenses {get; set;} = [];
 }

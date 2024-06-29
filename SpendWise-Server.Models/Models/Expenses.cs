@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpendWise_Server.Models.Models;
 
-public class Costs
+public class Expenses
 {
     [Key]
     public int Id {get; set;}

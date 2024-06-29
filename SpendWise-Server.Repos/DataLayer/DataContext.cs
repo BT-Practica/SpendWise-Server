@@ -15,6 +15,9 @@ namespace SpendWise_Server.Repos.DataLayer
         public DbSet<Exchange> Exchanges { get; set; }
         public DbSet<Income_Categories> Income_Categories { get; set; }
         public DbSet<Incomes> Incomes { get; set; }
+        public DbSet<Expense_Categories> Expense_Categories {get; set;}
+        public DbSet<Expenses> Expenses {get; set;}
+        public DbSet<User_Categories> User_Categories {get; set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -60,9 +63,9 @@ namespace SpendWise_Server.Repos.DataLayer
                 .HasForeignKey(e => e.SecondCurrencyId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Costs>()
+            modelBuilder.Entity<Expenses>()
                 .HasOne(c => c.User)
-                .WithMany(u => u.Costs)
+                .WithMany(u => u.Expenses)
                 .HasForeignKey(c => c.UserId)
                 .OnDelete(DeleteBehavior.NoAction);
         }

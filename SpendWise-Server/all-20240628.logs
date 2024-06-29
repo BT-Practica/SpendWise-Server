@@ -61,3 +61,6 @@
 2024-06-28 14:04:44.783 +03:00 [INF] The log is working
 2024-06-28 14:16:23.083 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
 2024-06-28 14:19:57.417 +03:00 [INF] The log is working
+2024-06-28 22:10:50.651 +03:00 [ERR] Eroare in ExpensesController.GetExpenseById: Expense not found
+2024-06-28 22:12:15.140 +03:00 [INF] Expense SpendWise_Server.Models.DTOs.ExpensesDtos.CreateExpenseDTO added
+2024-06-28 22:13:41.772 +03:00 [INF] Expense SpendWise_Server.Models.DTOs.ExpensesDtos.CreateExpenseDTO added
