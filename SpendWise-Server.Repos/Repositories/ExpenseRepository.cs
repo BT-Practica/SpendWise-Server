@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using SpendWise_Server.Models.DTOs.ExpensesDtos;
 using SpendWise_Server.Models.Models;
 using SpendWise_Server.Repos.DataLayer;
@@ -38,6 +39,15 @@ namespace SpendWise_Server.Repos.Repositories
                 _context.SaveChanges();
             }
         }
+
+        public async Task<bool> ExpenseExistById(int id){
+            return await _context.Expenses.
+            Where(e => e.Id 
+             == id)
+            .Select(e => true )
+            .FirstOrDefaultAsync(); 
+                      
+            }
 
         public Expenses GetExpenseById(int id)
         {
