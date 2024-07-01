@@ -84,4 +84,9 @@ public class UserRepository : IUserRepository
         User foundUser = _context.Users.FirstOrDefault(u => u.UserName == userName);
         return foundUser;
     }
+    public User FindUserByEmail(string email)
+    {
+        User foundUser = _context.Users.FirstOrDefault(u => u.Email == email);
+        return foundUser;
+    }
 }

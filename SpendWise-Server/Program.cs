@@ -9,7 +9,18 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
+
+//CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        builder => builder.WithOrigins("http://localhost:2113")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod());
+});
+
 //Creting the logger
 Log.Logger = new LoggerConfiguration()
                             .WriteTo.File(new JsonFormatter(),
@@ -43,6 +54,7 @@ builder.Services.AddAuthentication(option =>
         };
 
     });
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -78,6 +90,9 @@ BusinessRegistrations.RegisterDependecies(builder.Services, builder.Configuratio
 
 builder.Services.AddLogging();
 var app = builder.Build();
+
+
+app.UseCors("AllowFrontend");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

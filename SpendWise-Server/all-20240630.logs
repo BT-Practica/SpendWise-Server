@@ -1,0 +1,4 @@
+2024-06-30 09:29:30.625 +03:00 [INF] The log is working
+2024-06-30 09:30:32.286 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-06-30 09:31:50.839 +03:00 [ERR] Eroare in AuthController.Login: Wrong password
+2024-06-30 09:32:15.509 +03:00 [ERR] Eroare in UsersController.UpdatePassword: There is no user with this email

@@ -60,3 +60,6 @@
 {"Timestamp":"2024-06-28T13:46:47.3549430+03:00","Level":"Error","MessageTemplate":"Eroare in UsersController.UpdatePassword: Invalid passworD","TraceId":"e5f60933f08d39b11b69b1a3a3a28bb8","SpanId":"8dc124769cb3464e"}
 {"Timestamp":"2024-06-28T13:48:26.3724310+03:00","Level":"Error","MessageTemplate":"Eroare in AuthController.Login: Wrong password","TraceId":"cc9f9834d2186894a7f2029bc6a62b67","SpanId":"8581c8016dfe15e7"}
 {"Timestamp":"2024-06-28T22:10:50.6518080+03:00","Level":"Error","MessageTemplate":"Eroare in ExpensesController.GetExpenseById: Expense not found","TraceId":"59443dcd2adbb3cf6b5cc25afd95e858","SpanId":"be2cf2c09dc93b01"}
+{"Timestamp":"2024-06-29T15:19:44.8990880+03:00","Level":"Error","MessageTemplate":"Eroare in UsersController.GetUser: Invalid ID","TraceId":"36cba6d65c3fe2665d572fcccdac1520","SpanId":"65b0d3ad6ce27f2b"}
+{"Timestamp":"2024-06-30T09:31:50.8391800+03:00","Level":"Error","MessageTemplate":"Eroare in AuthController.Login: Wrong password","TraceId":"6e597e0e2775b729a839f0f08230c568","SpanId":"11bc8698d154a97b"}
+{"Timestamp":"2024-06-30T09:32:15.5090180+03:00","Level":"Error","MessageTemplate":"Eroare in UsersController.UpdatePassword: There is no user with this email","TraceId":"1493fac259d2ee046978dfe0705745e2","SpanId":"8ff5458f0ebebb2a"}

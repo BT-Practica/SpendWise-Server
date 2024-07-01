@@ -84,8 +84,6 @@ public class UserService : IUserService
     }
 
     public void UpdatePassword(int id, string password){
-        Console.WriteLine(id);
-        Console.WriteLine(_userRepository.getUserById(id) == null);
         if(id <= 0 || _userRepository.getUserById(id) == null){
             throw new InvalidDataException("Invalid ID");
         }
@@ -105,6 +103,20 @@ public class UserService : IUserService
         _userRepository.UpdateEmail(id, email);
 
     }
+
+    public void ForgotPassword(string email, string newPassword){
+        User foundUser = _userRepository.FindUserByEmail(email);
+        if(foundUser == null){
+            throw new InvalidDataException("There is no user with this email");
+        }
+
+        if(!Regex.IsMatch(newPassword,"^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{8,}$")){
+            throw new InvalidDataException("Invalid password");
+        }
+        newPassword = BCrypt.Net.BCrypt.HashPassword(newPassword);
+        _userRepository.UpdatePassword(foundUser.Id, newPassword);
+    }
+
     public async Task UpdateCurrency(int id, int CurrencyId){
         Console.WriteLine(CurrencyId);
         if(id <= 0 || await _userRepository.getUserById(id) == null){

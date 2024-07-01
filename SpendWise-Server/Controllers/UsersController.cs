@@ -81,5 +81,17 @@ public class UsersController : ControllerBase
         return Ok();
     }
 
+    [HttpPut("ForgotPassword")]
+    public async Task<IActionResult> ForgotPassword([FromBody] UserForgotPasswordDTO userData)
+    {
+        try{
+            _userService.ForgotPassword(userData.email, userData.password);
+            return Ok("Password Updated");
+        }catch(InvalidDataException e){
+            Log.Error($"Eroare in UsersController.UpdatePassword: {e.Message}");
+            return BadRequest(e.Message);
+        }
+    }
+
 
 }
