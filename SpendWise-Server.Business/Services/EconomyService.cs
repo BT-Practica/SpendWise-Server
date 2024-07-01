@@ -1,43 +1,68 @@
 ﻿using Microsoft.Extensions.Logging;
 using SpendWise_Server.Business.Interfaces;
 using SpendWise_Server.Models;
+using SpendWise_Server.Models.DTOs.EconomyDtos;
 using SpendWise_Server.Repos.Interfaces;
 
 namespace SpendWise_Server.Business.Services
 {
     public class EconomyService : IEconomyService
     {
-        private readonly IEconomyRepository _repo;
-        private readonly ILogger _logger;
-        public EconomyService(IEconomyRepository repo, ILogger logger)
+        private readonly IEconomyRepository _economyRepository;
+        public EconomyService(IEconomyRepository repo)
         {
-            _logger = logger;
-            _repo = repo;
+            _economyRepository = repo;
         }
 
-        public async Task CreateEconomy(Economies economy)
+        public async Task CreateEconomy(EconomyDto economy)
         {
-            throw new NotImplementedException();
+            if (economy == null) {
+                throw new NullReferenceException("Economy is null");
+            }
+            await _economyRepository.AddEconomy(economy);
         }
 
         public async Task DeleteEconomy(int id)
         {
-            throw new NotImplementedException();
+            if(id <= 0 || (_economyRepository.GetEconomy(id) == null))
+            {
+                throw new InvalidDataException("Invalid ID");
+            }
+
+            await _economyRepository.DeleteEconomy(id);
         }
 
         public List<Economies> GetAllEconomies()
         {
-            throw new NotImplementedException();
+            List<Economies> economies = _economyRepository.GetAllEconomies();
+
+            return economies;  
         }
 
-        public Economies GetEconomy(string economyId)
+        public Economies GetEconomy(int economyId)
         {
-            throw new NotImplementedException();
+            if(economyId <= 0 || (_economyRepository.GetEconomy(economyId) == null)) {
+                throw new InvalidDataException("Invalid ID");
+            }
+
+            Economies economy = _economyRepository.GetEconomy(economyId);
+            
+            return economy;
         }
 
-        public async Task UpdateEcnomy(Economies economy, int id)
+        public async Task UpdateEcnomy(EconomyDto economy, int id)
         {
-            throw new NotImplementedException();
+            if (id <= 0)
+            {
+                throw new InvalidDataException("Invalid ID");
+            }
+            if (economy == null)
+            {
+                throw new NullReferenceException("Economy is null");
+            }
+
+            await _economyRepository.UpdateEconomy(economy, id);
         }
+
     }
 }
