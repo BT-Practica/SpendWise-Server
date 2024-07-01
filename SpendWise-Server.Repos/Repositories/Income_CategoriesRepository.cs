@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs.Income_CategoryDtos;
 using SpendWise_Server.Repos.DataLayer;
@@ -39,14 +40,15 @@ namespace SpendWise_Server.Repos.Repositories
 
         public List<Income_Categories> GetIncomeCategories()
         {
-            IEnumerable<Income_Categories> categories = _context.Income_Categories.ToList();
+            IEnumerable<Income_Categories> categories = _context.Income_Categories.
+                AsNoTracking().ToList();
             return _context.Income_Categories.ToList();
 
         }
 
         public Income_Categories GetIncomeCategoryById(int id)
         {
-            Income_Categories? incomeCat = _context.Income_Categories.FirstOrDefault(i => i.Id == id);
+            Income_Categories? incomeCat = _context.Income_Categories.AsNoTracking().FirstOrDefault(i => i.Id == id);
             if (incomeCat != null)
             {
                 _logger.LogError("The income category dosent exist");

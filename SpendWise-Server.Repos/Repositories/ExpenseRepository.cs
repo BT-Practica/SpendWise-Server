@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using SpendWise_Server.Models.DTOs.ExpensesDtos;
 using SpendWise_Server.Models.Models;
 using SpendWise_Server.Repos.DataLayer;
@@ -17,7 +13,7 @@ namespace SpendWise_Server.Repos.Repositories
             _context = context;
         }
         public void CreateExpense(CreateExpenseDTO expense)//DTO
-        {       
+        {
             Expenses newExpense = new Expenses()
             {
                 Amount = expense.Amount,

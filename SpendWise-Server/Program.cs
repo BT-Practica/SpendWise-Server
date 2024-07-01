@@ -92,13 +92,14 @@ builder.Services.AddLogging();
 var app = builder.Build();
 
 
-app.UseCors("AllowFrontend");
+/*app.UseCors("AllowFrontend");*/
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("AllowFrontend");
 }
 
 
