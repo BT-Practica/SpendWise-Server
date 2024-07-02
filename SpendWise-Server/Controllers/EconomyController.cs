@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
-using SpendWise_Server.Business.Services;
 using Serilog;
-using SpendWise_Server.Models.DTOs.EconomyDtos;
+using SpendWise_Server.Business.Services;
 using SpendWise_Server.Models;
+using SpendWise_Server.Models.DTOs.EconomyDtos;
 
 namespace SpendWise_Server.Controllers;
 
+[Route("api/[controller]")]
+[ApiController]
 public class EconomyController : ControllerBase
 {
     private readonly EconomyService _economyService;

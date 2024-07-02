@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using SpendWise_Server.Business.Interfaces;
+using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs.Incomes;
 
 namespace SpendWise_Server.Controllers
@@ -16,50 +17,89 @@ namespace SpendWise_Server.Controllers
         }
 
         [HttpGet("GetIncomeByUserId")]
-        public IActionResult GetIncomeById(int userid)
+        public async Task<ActionResult<List<Incomes>>> GetIncomeByUserId(int userId)
         {
-            var incomes = _incomeServices.GetSingleIncomeByUserId(userid);
-            return Ok(incomes);
+            try
+            {
+                var incomes = await _incomeServices.GetSingleIncomeByUserId(userId);
+                return Ok(incomes);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [HttpGet("GetIncomes")]
-        public IActionResult GetIncomes()
+        public async Task<ActionResult<List<Incomes>>> GetIncomes()
         {
-            var incomes = _incomeServices.GetAllIncome(); ;
+            var incomes = await _incomeServices.GetAllIncome();
             return Ok(incomes);
         }
 
         [HttpPost("CreateIncomes")]
-        public async Task<IActionResult> CreateIncomes(IncomesDto incomes)
+        public async Task<IActionResult> CreateIncomes(IncomesDto incomes, int userId)
         {
             if (incomes == null)
             {
                 Log.Error("The income is invalid");
+                return BadRequest("Invalid income data");
             }
-            var incomeCreate = _incomeServices.CreateIncome(incomes);
-            return Ok(incomes);
+
+            try
+            {
+                await _incomeServices.CreateIncome(incomes, userId);
+                return Ok("Income created successfully");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Failed to create income");
+                return StatusCode(500, "Failed to create income: " + ex.Message);
+            }
         }
 
+
+
         [HttpPut("UpdateIncomes")]
-        public async Task<IActionResult> UpdateIncomes(IncomesDto incomes, int id)
+        public async Task<IActionResult> UpdateIncomes(IncomesDto incomes, int id, int userId)
         {
             if (incomes == null)
             {
                 Log.Error("The income is invalid");
+                return BadRequest("Invalid income data");
             }
-            var incomeUpdate = _incomeServices.UpdateIncome(incomes, id);
-            return Ok(incomeUpdate);
+
+            try
+            {
+                await _incomeServices.UpdateIncome(incomes, id, userId);
+                return Ok("Income updated successfully");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Failed to update income");
+                return StatusCode(500, "Failed to update income: " + ex.Message);
+            }
         }
 
         [HttpDelete("DeleteIncomes")]
         public async Task<IActionResult> DeleteIncomes(int id)
         {
-            var incomes = _incomeServices.DeleteIncome(id);
-            if (incomes == null)
+            try
             {
-                Log.Error("Can`t delete the income because is null");
+                await _incomeServices.DeleteIncome(id);
+                return Ok("Income deleted successfully");
             }
-            return Ok(incomes);
+            catch (ArgumentException ex)
+            {
+                Log.Warning(ex, "Income not found");
+                return NotFound("Income not found");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Failed to delete income");
+                return StatusCode(500, "Failed to delete income: " + ex.Message);
+            }
         }
+
     }
 }

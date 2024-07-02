@@ -5,10 +5,10 @@ namespace SpendWise_Server.Business.Interfaces
 {
     public interface IIncomeServices
     {
-        Task CreateIncome(IncomesDto categoryDto);
+        Task CreateIncome(IncomesDto categoryDto, int userId);
         Task DeleteIncome(int id);
-        Task UpdateIncome(IncomesDto categoryDto, int id);
-        List<Incomes> GetAllIncome();
-        Incomes GetSingleIncomeByUserId(int userId);
+        Task UpdateIncome(IncomesDto categoryDto, int id, int userId);
+        Task<List<Incomes>> GetAllIncome();
+        Task<List<Incomes>> GetSingleIncomeByUserId(int userId);
     }
 }

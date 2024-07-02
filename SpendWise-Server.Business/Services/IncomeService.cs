@@ -14,9 +14,9 @@ namespace SpendWise_Server.Business.Services
         }
 
 
-        public async Task CreateIncome(IncomesDto incomeDto)
+        public async Task CreateIncome(IncomesDto incomeDto, int userId)
         {
-            await _repo.CreateIncome(incomeDto);
+            await _repo.CreateIncome(incomeDto, userId);
         }
 
         public async Task DeleteIncome(int id)
@@ -24,19 +24,19 @@ namespace SpendWise_Server.Business.Services
             await _repo.DeleteIncome(id);
         }
 
-        public List<Incomes> GetAllIncome()
+        public async Task<List<Incomes>> GetAllIncome()
         {
-            return _repo.GetIncomes();
+            return await _repo.GetIncomes();
         }
 
-        public Incomes GetSingleIncomeByUserId(int userid)
+        public async Task<List<Incomes>> GetSingleIncomeByUserId(int userid)
         {
-            return _repo.GetIncomeByUserId(userid);
+            return await _repo.GetIncomeByUserId(userid);
         }
 
-        public async Task UpdateIncome(IncomesDto categoryDto, int id)
+        public async Task UpdateIncome(IncomesDto categoryDto, int id, int userId)
         {
-            await _repo.UpdateIncome(id, categoryDto);
+            await _repo.UpdateIncome(id, categoryDto, userId);
         }
     }
 }
