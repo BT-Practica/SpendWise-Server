@@ -29,14 +29,14 @@ namespace SpendWise_Server.Controllers
         }
 
         [HttpPost("AddIncomeCategories")]
-        public IActionResult AddIncomeCategories(IncomeDto categoryDto)
+        public IActionResult AddIncomeCategories(Income_CategoryDto categoryDto)
         {
             _categoriesService.AddIncomeCategories(categoryDto);
             return Ok("The income categories what succesfully added");
         }
 
         [HttpPut("UpdateIncomeCategories")]
-        public IActionResult UpdateIncomeCategories(IncomeDto categoryDto, int id)
+        public IActionResult UpdateIncomeCategories(Income_CategoryDto categoryDto, int id)
         {
             _categoriesService.UpdateIncomeCategories(categoryDto, id);
             return Ok();

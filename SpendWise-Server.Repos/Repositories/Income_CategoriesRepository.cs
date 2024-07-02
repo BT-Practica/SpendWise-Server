@@ -17,7 +17,7 @@ namespace SpendWise_Server.Repos.Repositories
             _context = context;
         }
 
-        public void AddIncomeCategories(IncomeDto categoryDto)
+        public void AddIncomeCategories(Income_CategoryDto categoryDto)
         {
             Income categories = new Income() { Name = categoryDto.Name };
 
@@ -57,7 +57,7 @@ namespace SpendWise_Server.Repos.Repositories
             return incomeCat;
         }
 
-        public void UpdateIncomeCategories(IncomeDto categoryDto, int id)
+        public void UpdateIncomeCategories(Income_CategoryDto categoryDto, int id)
         {
             var incomeCat = _context.Income_Categories.FirstOrDefault(i => i.Id == id);
             if (incomeCat != null)

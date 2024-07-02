@@ -16,7 +16,7 @@ namespace SpendWise_Server.Business.Services
             _logger = logger;
         }
 
-        public void AddIncomeCategories(IncomeDto categoryDto)
+        public void AddIncomeCategories(Income_CategoryDto categoryDto)
         {
             _logger.LogInformation("You just added an income category");
             _repo.AddIncomeCategories(categoryDto);
@@ -40,7 +40,7 @@ namespace SpendWise_Server.Business.Services
             return _repo.GetIncomeCategoryById(id);
         }
 
-        public void UpdateIncomeCategories(IncomeDto categoryDto, int id)
+        public void UpdateIncomeCategories(Income_CategoryDto categoryDto, int id)
         {
             _logger.LogInformation("You just fetch an income category");
             _repo.UpdateIncomeCategories(categoryDto, id);

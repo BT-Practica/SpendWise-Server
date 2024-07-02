@@ -7,7 +7,7 @@ namespace SpendWise_Server.Repos.Interfaces
     {
         List<Incomes> GetIncomes();
         //get incomes by user id must be added
-        Incomes GetIncomes(int id);
+        Incomes GetIncomeByUserId(int userId);
         Task CreateIncome(IncomesDto incomesDto);
         Task UpdateIncome(int id, IncomesDto incomesDto);
         Task DeleteIncome(int id);

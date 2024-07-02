@@ -41,10 +41,9 @@ namespace SpendWise_Server.Repos.Repositories
             return incomes;
         }
 
-        public Incomes GetIncomes(int id)
+        public Incomes GetIncomeByUserId(int userid)
         {
-            var income = _context.Incomes.AsNoTracking().
-                FirstOrDefault(i => i.Id == id);
+            var income = _context.Incomes.FirstOrDefault(i => i.UserId == userid);
             return income;
         }
 

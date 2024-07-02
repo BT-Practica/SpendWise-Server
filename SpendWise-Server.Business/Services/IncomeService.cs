@@ -14,29 +14,29 @@ namespace SpendWise_Server.Business.Services
         }
 
 
-        public Task CreateIncome(IncomesDto incomeDto)
+        public async Task CreateIncome(IncomesDto incomeDto)
         {
-            return _repo.CreateIncome(incomeDto);
+            await _repo.CreateIncome(incomeDto);
         }
 
-        public Task DeleteIncome(int id)
+        public async Task DeleteIncome(int id)
         {
-            throw new NotImplementedException();
+            await _repo.DeleteIncome(id);
         }
 
-        public List<Income> GetAllIncome()
+        public List<Incomes> GetAllIncome()
         {
-            throw new NotImplementedException();
+            return _repo.GetIncomes();
         }
 
-        public Income GetSingleIncomeById(int id)
+        public Incomes GetSingleIncomeByUserId(int userid)
         {
-            throw new NotImplementedException();
+            return _repo.GetIncomeByUserId(userid);
         }
 
-        public Task UpdateIncome(IncomesDto categoryDto, int id)
+        public async Task UpdateIncome(IncomesDto categoryDto, int id)
         {
-            throw new NotImplementedException();
+            await _repo.UpdateIncome(id, categoryDto);
         }
     }
 }

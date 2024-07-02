@@ -8,7 +8,7 @@ namespace SpendWise_Server.Business.Interfaces
         Task CreateIncome(IncomesDto categoryDto);
         Task DeleteIncome(int id);
         Task UpdateIncome(IncomesDto categoryDto, int id);
-        List<Income> GetAllIncome();
-        Income GetSingleIncomeById(int id);
+        List<Incomes> GetAllIncome();
+        Incomes GetSingleIncomeByUserId(int userId);
     }
 }
