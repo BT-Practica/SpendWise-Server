@@ -43,6 +43,7 @@ namespace SpendWise_Server.Repos.Repositories
 
         public Incomes GetIncomeByUserId(int userid)
         {
+            //maybe here we need lit
             var income = _context.Incomes.FirstOrDefault(i => i.UserId == userid);
             return income;
         }

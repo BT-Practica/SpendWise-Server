@@ -1,4 +1,6 @@
-﻿namespace SpendWise_Server.Models.DTOs.Incomes
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SpendWise_Server.Models.DTOs.Incomes
 {
     public class IncomesDto
     {
@@ -6,6 +8,7 @@
         /*        public DateTime RegistrationDate { get; set; }*/
         public string Description { get; set; }
         public bool Reccurence { get; set; }
+        [Required]
         public int UserId { get; set; }
         public int Income_CategoryId { get; set; }
     }
