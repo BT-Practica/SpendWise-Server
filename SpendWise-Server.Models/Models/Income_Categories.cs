@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SpendWise_Server.Models;
 
-public class Income_Categories
+public class Income
 {
     [Key]
     public int Id { get; set; }

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
@@ -24,11 +20,11 @@ public class ExpensesController : ControllerBase
     }
 
     [HttpGet("GetExpense")]
-    public async Task<IActionResult> GetExpense([FromQuery]int expenseId)
+    public async Task<IActionResult> GetExpense([FromQuery] int expenseId)
     {
         try
         {
-            Expenses expense =  _expenseService.GetExpenseById(expenseId);
+            Expenses expense = _expenseService.GetExpenseById(expenseId);
             return Ok(expense);
         }
         catch (InvalidDataException e)
@@ -56,12 +52,16 @@ public class ExpensesController : ControllerBase
         }
     }
     [HttpPut("AddExpense")]
-    public IActionResult AddExpense(CreateExpenseDTO expense){
-        try{
+    public IActionResult AddExpense(CreateExpenseDTO expense)
+    {
+        try
+        {
             _expenseService.CreateExpense(expense);
             Log.Information($"Expense {expense} added");
             return Ok("Expense added");
-        }catch(NullReferenceException e){
+        }
+        catch (NullReferenceException e)
+        {
             return BadRequest(e.Message);
         }
     }
@@ -69,15 +69,17 @@ public class ExpensesController : ControllerBase
     [HttpDelete("RemoveExpense")]
     public async Task<IActionResult> RemoveExpense(int id)
     {
-        try{
+        try
+        {
             _expenseService.DeleteExpense(id);
             return Ok();
-        }catch(InvalidDataException e)
+        }
+        catch (InvalidDataException e)
         {
             Log.Error($"Eroare in ExpensesController.DeleteExpense: {e.Message}");
             return NotFound("Expense Not Found");
         }
     }
-    
+
 
 }

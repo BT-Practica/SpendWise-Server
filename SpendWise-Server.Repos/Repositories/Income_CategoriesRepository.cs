@@ -11,15 +11,15 @@ namespace SpendWise_Server.Repos.Repositories
     {
         private readonly DataContext _context;
         private readonly ILogger _logger;
-        public Income_CategoriesRepository(DataContext context, ILogger<Income_Categories> logger)
+        public Income_CategoriesRepository(DataContext context, ILogger<Income> logger)
         {
             _logger = logger;
             _context = context;
         }
 
-        public void AddIncomeCategories(Income_CategoryDto categoryDto)
+        public void AddIncomeCategories(IncomeDto categoryDto)
         {
-            Income_Categories categories = new Income_Categories() { Name = categoryDto.Name };
+            Income categories = new Income() { Name = categoryDto.Name };
 
 
             _context.AddAsync(categories);
@@ -38,17 +38,17 @@ namespace SpendWise_Server.Repos.Repositories
             _context.SaveChanges();
         }
 
-        public List<Income_Categories> GetIncomeCategories()
+        public List<Income> GetIncomeCategories()
         {
-            IEnumerable<Income_Categories> categories = _context.Income_Categories.
+            IEnumerable<Income> categories = _context.Income_Categories.
                 AsNoTracking().ToList();
             return _context.Income_Categories.ToList();
 
         }
 
-        public Income_Categories GetIncomeCategoryById(int id)
+        public Income GetIncomeCategoryById(int id)
         {
-            Income_Categories? incomeCat = _context.Income_Categories.AsNoTracking().FirstOrDefault(i => i.Id == id);
+            Income? incomeCat = _context.Income_Categories.AsNoTracking().FirstOrDefault(i => i.Id == id);
             if (incomeCat != null)
             {
                 _logger.LogError("The income category dosent exist");
@@ -57,7 +57,7 @@ namespace SpendWise_Server.Repos.Repositories
             return incomeCat;
         }
 
-        public void UpdateIncomeCategories(Income_CategoryDto categoryDto, int id)
+        public void UpdateIncomeCategories(IncomeDto categoryDto, int id)
         {
             var incomeCat = _context.Income_Categories.FirstOrDefault(i => i.Id == id);
             if (incomeCat != null)

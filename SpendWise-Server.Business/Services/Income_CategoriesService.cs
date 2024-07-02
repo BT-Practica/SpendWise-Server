@@ -10,13 +10,13 @@ namespace SpendWise_Server.Business.Services
     {
         private readonly IIncome_CategoriesRepository _repo;
         private readonly ILogger _logger;
-        public Income_CategoriesService(IIncome_CategoriesRepository repo, ILogger<Income_Categories> logger)
+        public Income_CategoriesService(IIncome_CategoriesRepository repo, ILogger<Income> logger)
         {
             _repo = repo;
             _logger = logger;
         }
 
-        public void AddIncomeCategories(Income_CategoryDto categoryDto)
+        public void AddIncomeCategories(IncomeDto categoryDto)
         {
             _logger.LogInformation("You just added an income category");
             _repo.AddIncomeCategories(categoryDto);
@@ -28,19 +28,19 @@ namespace SpendWise_Server.Business.Services
             _repo.DeleteIncomeCategories(id);
         }
 
-        public List<Income_Categories> GetAllIncomeCategories()
+        public List<Income> GetAllIncomeCategories()
         {
             _logger.LogInformation("You just fetched all income categories");
             return _repo.GetIncomeCategories();
         }
 
-        public Income_Categories GetSingleIncomeCategoryById(int id)
+        public Income GetSingleIncomeCategoryById(int id)
         {
             _logger.LogInformation("You just fetch an income category");
             return _repo.GetIncomeCategoryById(id);
         }
 
-        public void UpdateIncomeCategories(Income_CategoryDto categoryDto, int id)
+        public void UpdateIncomeCategories(IncomeDto categoryDto, int id)
         {
             _logger.LogInformation("You just fetch an income category");
             _repo.UpdateIncomeCategories(categoryDto, id);

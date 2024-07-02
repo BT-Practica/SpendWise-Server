@@ -17,7 +17,7 @@ public class Incomes
     [Required]
     public int UserId { get; set; }
     [Required]
-    public Income_Categories Income_Category { get; set; }
+    public Income Income_Category { get; set; }
     [Required]
     public int Income_CategoryId { get; set; }
 }
