@@ -19,3 +19,26 @@ System.Exception: Income not found
    at SpendWise_Server.Repos.Repositories.IncomeRepository.DeleteIncome(Int32 id) in C:\Users\Andrei Alionte\source\repos\SpendWise-Server\SpendWise-Server.Repos\Repositories\IncomeRepository.cs:line 62
    at SpendWise_Server.Business.Services.IncomeService.DeleteIncome(Int32 id) in C:\Users\Andrei Alionte\source\repos\SpendWise-Server\SpendWise-Server.Business\Services\IncomeService.cs:line 24
    at SpendWise_Server.Controllers.IncomesController.DeleteIncomes(Int32 id) in C:\Users\Andrei Alionte\source\repos\SpendWise-Server\SpendWise-Server\Controllers\IncomesController.cs:line 89
+2024-07-02 15:15:27.848 +03:00 [ERR] Eroare in AuthController.Register: Format of the initialization string does not conform to specification starting at index 79.
+2024-07-02 15:17:10.963 +03:00 [ERR] Eroare in AuthController.Register: Format of the initialization string does not conform to specification starting at index 79.
+2024-07-02 15:21:25.145 +03:00 [ERR] Eroare in AuthController.Register: Format of the initialization string does not conform to specification starting at index 79.
+2024-07-02 15:25:21.405 +03:00 [ERR] Eroare in AuthController.Register: Format of the initialization string does not conform to specification starting at index 79.
+2024-07-02 15:27:58.601 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-02 15:29:05.306 +03:00 [ERR] Eroare in AuthController.Login: User not found
+2024-07-02 15:29:21.239 +03:00 [ERR] Eroare in AuthController.Login: User not found
+2024-07-02 15:30:11.550 +03:00 [ERR] Eroare in AuthController.Login: User not found
+2024-07-02 15:31:04.425 +03:00 [ERR] Eroare in AuthController.Login: User not found
+2024-07-02 19:38:14.891 +03:00 [ERR] Eroare in AuthController.Login: User not found
+2024-07-02 21:01:17.183 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-02 21:06:12.632 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-02 21:08:40.299 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-02 21:43:03.462 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-02 21:43:03.477 +03:00 [ERR] Eroare in AuthController.Register: Username already exists
+2024-07-02 21:44:19.881 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-02 21:46:32.895 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-02 21:52:59.821 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-02 21:55:12.721 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-02 22:03:30.830 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-02 22:03:30.830 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-02 22:31:13.794 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-02 22:31:13.794 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
