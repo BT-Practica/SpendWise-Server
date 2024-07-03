@@ -22,8 +22,8 @@ namespace SpendWise_Server.Repos.Repositories
             Income categories = new Income() { Name = categoryDto.Name };
 
 
-            _context.AddAsync(categories);
-            _context.SaveChangesAsync();
+            _context.Income_Categories.Add(categories);
+            _context.SaveChanges();
 
         }
 
@@ -34,7 +34,7 @@ namespace SpendWise_Server.Repos.Repositories
             {
                 _logger.LogError("The income category dosent exist");
             }
-            _context.Remove(incomeCat);
+            _context.Income_Categories.Remove(incomeCat);
             _context.SaveChanges();
         }
 
@@ -66,7 +66,7 @@ namespace SpendWise_Server.Repos.Repositories
             }
             incomeCat.Name = categoryDto.Name;
 
-            _context.Update(incomeCat);
+            _context.Income_Categories.Update(incomeCat);
             _context.SaveChanges();
         }
     }
