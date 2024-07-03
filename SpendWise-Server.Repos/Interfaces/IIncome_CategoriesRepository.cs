@@ -5,8 +5,8 @@ namespace SpendWise_Server.Repos.Interfaces
 {
     public interface IIncome_CategoriesRepository
     {
-        Income GetIncomeCategoryById(int id);
-        List<Income> GetIncomeCategories();
+        Income_Categories GetIncomeCategoryById(int id);
+        List<Income_Categories> GetIncomeCategories();
         void AddIncomeCategories(Income_CategoryDto categoryDto);
         void UpdateIncomeCategories(Income_CategoryDto categoryDto, int id);
         void DeleteIncomeCategories(int id);

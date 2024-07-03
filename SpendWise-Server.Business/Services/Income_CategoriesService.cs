@@ -28,13 +28,13 @@ namespace SpendWise_Server.Business.Services
             _repo.DeleteIncomeCategories(id);
         }
 
-        public List<Income> GetAllIncomeCategories()
+        public List<Income_Categories> GetAllIncomeCategories()
         {
             _logger.LogInformation("You just fetched all income categories");
             return _repo.GetIncomeCategories();
         }
 
-        public Income GetSingleIncomeCategoryById(int id)
+        public Income_Categories GetSingleIncomeCategoryById(int id)
         {
             _logger.LogInformation("You just fetch an income category");
             return _repo.GetIncomeCategoryById(id);

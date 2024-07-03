@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using SpendWise_Server.Business.Interfaces;
 using SpendWise_Server.Business.Services;
 using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs.EconomyDtos;
@@ -10,9 +11,9 @@ namespace SpendWise_Server.Controllers;
 [ApiController]
 public class EconomyController : ControllerBase
 {
-    private readonly EconomyService _economyService;
+    private readonly IEconomyService _economyService;
 
-    public EconomyController(EconomyService economyService)
+    public EconomyController(IEconomyService economyService)
     {
         _economyService = economyService;
     }
@@ -81,7 +82,7 @@ public class EconomyController : ControllerBase
         {
             await _economyService.UpdateEcnomy(economy, id);
             Log.Information($"Economy {economy} updated!");
-            return Ok($"Economy added!");
+            return Ok($"Economy updated!");
         }
         catch (KeyNotFoundException e)
         {

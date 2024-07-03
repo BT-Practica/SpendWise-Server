@@ -6,8 +6,9 @@ public class Incomes
 {
     [Key]
     public int Id { get; set; }
+    public DateTime? RegistrationDate { get; set; }
     [Required]
-    public DateTime RegistrationDate { get; set; }
+    public int Amount {get; set;} 
     [MaxLength(200)]
     public string Description { get; set; }
     [Required]
@@ -17,7 +18,7 @@ public class Incomes
     [Required]
     public int UserId { get; set; }
     [Required]
-    public Income Income_Category { get; set; }
+    public Income_Categories Income_Category { get; set; }
     [Required]
     public int Income_CategoryId { get; set; }
 }

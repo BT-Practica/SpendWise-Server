@@ -19,11 +19,11 @@ namespace SpendWise_Server.Repos.Repositories
 
         public void AddIncomeCategories(Income_CategoryDto categoryDto)
         {
-            Income categories = new Income() { Name = categoryDto.Name };
+            Income_Categories categories = new Income_Categories() { Name = categoryDto.Name };
 
 
-            _context.Income_Categories.Add(categories);
-            _context.SaveChanges();
+            _context.Income_Categories.AddAsync(categories);
+            _context.SaveChangesAsync();
 
         }
 
@@ -38,17 +38,17 @@ namespace SpendWise_Server.Repos.Repositories
             _context.SaveChanges();
         }
 
-        public List<Income> GetIncomeCategories()
+        public List<Income_Categories> GetIncomeCategories()
         {
-            IEnumerable<Income> categories = _context.Income_Categories.
+            IEnumerable<Income_Categories> categories = _context.Income_Categories.
                 AsNoTracking().ToList();
             return _context.Income_Categories.ToList();
 
         }
 
-        public Income GetIncomeCategoryById(int id)
+        public Income_Categories GetIncomeCategoryById(int id)
         {
-            Income? incomeCat = _context.Income_Categories.AsNoTracking().FirstOrDefault(i => i.Id == id);
+            Income_Categories? incomeCat = _context.Income_Categories.AsNoTracking().FirstOrDefault(i => i.Id == id);
             if (incomeCat != null)
             {
                 _logger.LogError("The income category dosent exist");

@@ -17,7 +17,7 @@ namespace SpendWise_Server.Repos.Repositories
         {
             _context = context;
         }
-        public void CreateExpense(CreateExpenseDTO expense)//DTO
+        public async Task CreateExpense(CreateExpenseDTO expense)//DTO
         {
             Expenses newExpense = new Expenses()
             {
@@ -27,37 +27,28 @@ namespace SpendWise_Server.Repos.Repositories
                 Expense_CategoryId = expense.Expense_CategoryId,
                 CurrencyId = expense.CurrencyId
             };
-            _context.Expenses.Add(newExpense);
+            await _context.Expenses.AddAsync(newExpense);
             _context.SaveChanges();
         }
-        public void DeleteExpense(int id)
+        public async Task DeleteExpense(RemoveExpenseDTO data)
         {
-            var expense = _context.Expenses.FirstOrDefault(e => e.Id == id);
+            var expense = await _context.Expenses.FirstOrDefaultAsync(e => e.Id == data.ExpenseId);
             if (expense != null)
             {
                 _context.Expenses.Remove(expense);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
 
-        public async Task<bool> ExpenseExistById(int id)
+        public async Task<Expenses> GetExpenseById(int id)
         {
-            return await _context.Expenses.
-            Where(e => e.Id
-             == id)
-            .Select(e => true)
-            .FirstOrDefaultAsync();
-
+            return await _context.Expenses.FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public Expenses GetExpenseById(int id)
+        public async Task<IEnumerable<Expenses>> GetExpensesByUserId(int userId)
         {
-            return _context.Expenses.FirstOrDefault(e => e.Id == id);
+            return await _context.Expenses.Where(e => e.UserId == userId).ToListAsync();
         }
 
-        public IEnumerable<Expenses> GetExpensesByUserId(int userId)
-        {
-            return _context.Expenses.Where(e => e.UserId == userId).ToList();
-        }
     }
 }

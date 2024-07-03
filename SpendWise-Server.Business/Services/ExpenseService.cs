@@ -12,37 +12,39 @@ namespace SpendWise_Server.Business.Services
     public class ExpenseService : IExpenseService
     {
         private readonly IExpenseRepository _expenseRepository;
+        private readonly IUserRepository _userRepository;
 
-        public ExpenseService(IExpenseRepository expenseRepository)
+        public ExpenseService(IExpenseRepository expenseRepository, IUserRepository userRepository)
         {
             _expenseRepository = expenseRepository;
+            _userRepository = userRepository;
         }
 
-        public void CreateExpense(CreateExpenseDTO expense)
+        public async Task CreateExpense(CreateExpenseDTO expense)
         {
             if (expense == null)
             {
                 throw new NullReferenceException("Expense is null");
             }
-            _expenseRepository.CreateExpense(expense);
+            await _expenseRepository.CreateExpense(expense);
         }
 
-        public void DeleteExpense(int id)
+        public async Task DeleteExpense(RemoveExpenseDTO data)
         {
-            if (id <= 0 || _expenseRepository.GetExpenseById(id) == null)
+            if (data.ExpenseId <= 0 || data.UserId <= 0 || await _expenseRepository.GetExpenseById(data.ExpenseId) == null || await _userRepository.getUserById(data.UserId) == null)
             {
                 throw new InvalidDataException("Invalid ID");
             }
-            _expenseRepository.DeleteExpense(id);
+            await _expenseRepository.DeleteExpense(data);
         }
 
-        public Expenses GetExpenseById(int id)
+        public async Task<Expenses> GetExpenseById(int id)
         {
             if (id <= 0)
             {
                 throw new InvalidDataException("Invalid ID");
             }
-            Expenses expense = _expenseRepository.GetExpenseById(id);
+            Expenses expense = await _expenseRepository.GetExpenseById(id);
             if (expense == null)
             {
                 throw new KeyNotFoundException("Expense not found");
@@ -50,13 +52,13 @@ namespace SpendWise_Server.Business.Services
             return expense;
         }
 
-        public IEnumerable<Expenses> GetExpensesByUserId(int userId)
+        public async Task<IEnumerable<Expenses>> GetExpensesByUserId(int userId)
         {
             if (userId <= 0)
             {
                 throw new InvalidDataException("Invalid ID");
             }
-            return _expenseRepository.GetExpensesByUserId(userId);
+            return await _expenseRepository.GetExpensesByUserId(userId);
 
         }
     }

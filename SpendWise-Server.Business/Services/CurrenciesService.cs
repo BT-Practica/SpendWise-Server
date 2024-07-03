@@ -23,7 +23,7 @@ public class CurrenciesService : ICurrencyService
     {
         if (id<0){
             _logger.LogError("Business: Invalid id");
-            throw new ArgumentException("Invalid id");
+            throw new InvalidDataException("Invalid id");
         }
         var currency = await _currencyRepository.GetCurrency(id);
         return currency;

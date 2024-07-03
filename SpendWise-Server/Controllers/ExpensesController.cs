@@ -9,7 +9,7 @@ namespace SpendWise_Server.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
+//[Authorize]
 public class ExpensesController : ControllerBase
 {
     private readonly IExpenseService _expenseService;
@@ -24,7 +24,7 @@ public class ExpensesController : ControllerBase
     {
         try
         {
-            Expenses expense = _expenseService.GetExpenseById(expenseId);
+            Expenses expense = await _expenseService.GetExpenseById(expenseId);
             return Ok(expense);
         }
         catch (InvalidDataException e)
@@ -39,11 +39,11 @@ public class ExpensesController : ControllerBase
         }
     }
     [HttpGet("GetExpenseByUserId")]
-    public ActionResult<IEnumerable<Expenses>> GetExpensesByUserId(int userId)
+    public async Task<ActionResult<IEnumerable<Expenses>>> GetExpensesByUserId(int userId)
     {
         try
         {
-            var expenses = _expenseService.GetExpensesByUserId(userId);
+            var expenses = await _expenseService.GetExpensesByUserId(userId);
             return Ok(expenses);
         }
         catch (InvalidDataException e)
@@ -52,11 +52,11 @@ public class ExpensesController : ControllerBase
         }
     }
     [HttpPut("AddExpense")]
-    public IActionResult AddExpense(CreateExpenseDTO expense)
+    public async Task<IActionResult> AddExpense(CreateExpenseDTO expense)
     {
         try
         {
-            _expenseService.CreateExpense(expense);
+            await _expenseService.CreateExpense(expense);
             Log.Information($"Expense {expense} added");
             return Ok("Expense added");
         }
@@ -67,11 +67,11 @@ public class ExpensesController : ControllerBase
     }
 
     [HttpDelete("RemoveExpense")]
-    public async Task<IActionResult> RemoveExpense(int id)
+    public async Task<IActionResult> RemoveExpense(RemoveExpenseDTO data)
     {
         try
         {
-            _expenseService.DeleteExpense(id);
+            await _expenseService.DeleteExpense(data);
             return Ok();
         }
         catch (InvalidDataException e)

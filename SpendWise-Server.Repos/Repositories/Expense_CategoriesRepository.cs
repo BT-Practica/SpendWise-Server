@@ -21,7 +21,8 @@ public class Expense_CategoriesRepository : IExpense_CategoriesRepository
     {
         var userToAdd = _context.Users.FirstOrDefault(u => u.Id == newExpenseCategory.UserId);
         var ExpenseToAdd = new Expense_Categories{
-            Name = newExpenseCategory.Name
+            Name = newExpenseCategory.Name,
+            CreatedAt = DateTime.Now
         };
         var user_Category = await _context.User_Categories.AddAsync(new User_Categories{
             Budget = 0,

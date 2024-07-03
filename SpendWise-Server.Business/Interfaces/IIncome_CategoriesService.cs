@@ -8,7 +8,7 @@ namespace SpendWise_Server.Business.Interfaces
         void AddIncomeCategories(Income_CategoryDto categoryDto);
         void DeleteIncomeCategories(int id);
         void UpdateIncomeCategories(Income_CategoryDto categoryDto, int id);
-        List<Income> GetAllIncomeCategories();
-        Income GetSingleIncomeCategoryById(int id);
+        List<Income_Categories> GetAllIncomeCategories();
+        Income_Categories GetSingleIncomeCategoryById(int id);
     }
 }

@@ -12,8 +12,8 @@ using SpendWise_Server.Repos.DataLayer;
 namespace SpendWise_Server.Repos.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240628130953_FinalModels")]
-    partial class FinalModels
+    [Migration("20240703125929_Migartion02")]
+    partial class Migartion02
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -97,6 +97,9 @@ namespace SpendWise_Server.Repos.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -108,7 +111,7 @@ namespace SpendWise_Server.Repos.Migrations
                     b.Property<bool>("Reccurence")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("RegistrationDate")
+                    b.Property<DateTime?>("RegistrationDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
@@ -151,6 +154,9 @@ namespace SpendWise_Server.Repos.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -205,9 +211,8 @@ namespace SpendWise_Server.Repos.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Budget")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Budget")
+                        .HasColumnType("int");
 
                     b.Property<int>("Expense_CategoryId")
                         .HasColumnType("int");

@@ -6,4 +6,5 @@ public class EconomyDto
 {
     [Required]
     public double Amount { get; set; }
+    public int UserId {get; set;}
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SpendWise_Server.Repos.Migrations
 {
     /// <inheritdoc />
-    public partial class FinalConstraintsModels : Migration
+    public partial class Migartion01 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,6 +23,20 @@ namespace SpendWise_Server.Repos.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Currencies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Expense_Categories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Expense_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -107,12 +121,47 @@ namespace SpendWise_Server.Repos.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Expenses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Amount = table.Column<double>(type: "float", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Expense_CategoryId = table.Column<int>(type: "int", nullable: false),
+                    CurrencyId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Expenses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Expenses_Currencies_CurrencyId",
+                        column: x => x.CurrencyId,
+                        principalTable: "Currencies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Expenses_Expense_Categories_Expense_CategoryId",
+                        column: x => x.Expense_CategoryId,
+                        principalTable: "Expense_Categories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Expenses_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Incomes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RegistrationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    RegistrationDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Amount = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Reccurence = table.Column<bool>(type: "bit", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
@@ -133,6 +182,31 @@ namespace SpendWise_Server.Repos.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "User_Categories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Budget = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Expense_CategoryId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User_Categories", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_User_Categories_Expense_Categories_Expense_CategoryId",
+                        column: x => x.Expense_CategoryId,
+                        principalTable: "Expense_Categories",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_User_Categories_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Economies_UserId",
                 table: "Economies",
@@ -144,6 +218,21 @@ namespace SpendWise_Server.Repos.Migrations
                 column: "SecondCurrencyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Expenses_CurrencyId",
+                table: "Expenses",
+                column: "CurrencyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Expenses_Expense_CategoryId",
+                table: "Expenses",
+                column: "Expense_CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Expenses_UserId",
+                table: "Expenses",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Incomes_Income_CategoryId",
                 table: "Incomes",
                 column: "Income_CategoryId");
@@ -151,6 +240,16 @@ namespace SpendWise_Server.Repos.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Incomes_UserId",
                 table: "Incomes",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_Categories_Expense_CategoryId",
+                table: "User_Categories",
+                column: "Expense_CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_Categories_UserId",
+                table: "User_Categories",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -175,10 +274,19 @@ namespace SpendWise_Server.Repos.Migrations
                 name: "Exchanges");
 
             migrationBuilder.DropTable(
+                name: "Expenses");
+
+            migrationBuilder.DropTable(
                 name: "Incomes");
 
             migrationBuilder.DropTable(
+                name: "User_Categories");
+
+            migrationBuilder.DropTable(
                 name: "Income_Categories");
+
+            migrationBuilder.DropTable(
+                name: "Expense_Categories");
 
             migrationBuilder.DropTable(
                 name: "Users");

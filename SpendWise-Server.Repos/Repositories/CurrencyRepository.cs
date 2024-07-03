@@ -23,6 +23,7 @@ public class CurrencyRepository : ICurrencyRepository
     {
         var currency = await _dataContext.Currencies.FirstOrDefaultAsync(c => c.Id == currencyId);
         if (currency == null)
+            throw new KeyNotFoundException("Currency does not exist.");
             _logger.LogError("Repository: Currency does not exit!");
             
         return currency;

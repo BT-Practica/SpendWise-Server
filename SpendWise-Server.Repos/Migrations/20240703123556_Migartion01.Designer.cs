@@ -12,8 +12,8 @@ using SpendWise_Server.Repos.DataLayer;
 namespace SpendWise_Server.Repos.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240627122044_FinalConstraintsModels")]
-    partial class FinalConstraintsModels
+    [Migration("20240703123556_Migartion01")]
+    partial class Migartion01
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,7 +72,7 @@ namespace SpendWise_Server.Repos.Migrations
                     b.ToTable("Economies");
                 });
 
-            modelBuilder.Entity("SpendWise_Server.Models.Income_Categories", b =>
+            modelBuilder.Entity("SpendWise_Server.Models.Income", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -97,6 +97,9 @@ namespace SpendWise_Server.Repos.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(200)
@@ -108,7 +111,7 @@ namespace SpendWise_Server.Repos.Migrations
                     b.Property<bool>("Reccurence")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("RegistrationDate")
+                    b.Property<DateTime?>("RegistrationDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
@@ -142,6 +145,88 @@ namespace SpendWise_Server.Repos.Migrations
                     b.HasIndex("SecondCurrencyId");
 
                     b.ToTable("Exchanges");
+                });
+
+            modelBuilder.Entity("SpendWise_Server.Models.Models.Expense_Categories", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(75)
+                        .HasColumnType("nvarchar(75)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Expense_Categories");
+                });
+
+            modelBuilder.Entity("SpendWise_Server.Models.Models.Expenses", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("float");
+
+                    b.Property<int>("CurrencyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Expense_CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CurrencyId");
+
+                    b.HasIndex("Expense_CategoryId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Expenses");
+                });
+
+            modelBuilder.Entity("SpendWise_Server.Models.Models.User_Categories", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Budget")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Expense_CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Expense_CategoryId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("User_Categories");
                 });
 
             modelBuilder.Entity("SpendWise_Server.Models.User", b =>
@@ -195,7 +280,7 @@ namespace SpendWise_Server.Repos.Migrations
 
             modelBuilder.Entity("SpendWise_Server.Models.Incomes", b =>
                 {
-                    b.HasOne("SpendWise_Server.Models.Income_Categories", "Income_Category")
+                    b.HasOne("SpendWise_Server.Models.Income", "Income_Category")
                         .WithMany("Incomes")
                         .HasForeignKey("Income_CategoryId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -231,6 +316,52 @@ namespace SpendWise_Server.Repos.Migrations
                     b.Navigation("SecondCurrency");
                 });
 
+            modelBuilder.Entity("SpendWise_Server.Models.Models.Expenses", b =>
+                {
+                    b.HasOne("SpendWise_Server.Models.Currencies", "Currency")
+                        .WithMany("Expenses")
+                        .HasForeignKey("CurrencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SpendWise_Server.Models.Models.Expense_Categories", "Expense_Category")
+                        .WithMany("Expenses")
+                        .HasForeignKey("Expense_CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SpendWise_Server.Models.User", "User")
+                        .WithMany("Expenses")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Currency");
+
+                    b.Navigation("Expense_Category");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SpendWise_Server.Models.Models.User_Categories", b =>
+                {
+                    b.HasOne("SpendWise_Server.Models.Models.Expense_Categories", "Expense_Category")
+                        .WithMany("User_Categories")
+                        .HasForeignKey("Expense_CategoryId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("SpendWise_Server.Models.User", "User")
+                        .WithMany("User_Categories")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Expense_Category");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("SpendWise_Server.Models.User", b =>
                 {
                     b.HasOne("SpendWise_Server.Models.Currencies", "Currency")
@@ -244,6 +375,8 @@ namespace SpendWise_Server.Repos.Migrations
 
             modelBuilder.Entity("SpendWise_Server.Models.Currencies", b =>
                 {
+                    b.Navigation("Expenses");
+
                     b.Navigation("FirstExchanges");
 
                     b.Navigation("SecondExchanges");
@@ -251,16 +384,27 @@ namespace SpendWise_Server.Repos.Migrations
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("SpendWise_Server.Models.Income_Categories", b =>
+            modelBuilder.Entity("SpendWise_Server.Models.Income", b =>
                 {
                     b.Navigation("Incomes");
+                });
+
+            modelBuilder.Entity("SpendWise_Server.Models.Models.Expense_Categories", b =>
+                {
+                    b.Navigation("Expenses");
+
+                    b.Navigation("User_Categories");
                 });
 
             modelBuilder.Entity("SpendWise_Server.Models.User", b =>
                 {
                     b.Navigation("Economies");
 
+                    b.Navigation("Expenses");
+
                     b.Navigation("Incomes");
+
+                    b.Navigation("User_Categories");
                 });
 #pragma warning restore 612, 618
         }

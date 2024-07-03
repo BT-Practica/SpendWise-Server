@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs;
+using SpendWise_Server.Models.Models;
 using SpendWise_Server.Repos.DataLayer;
 using SpendWise_Server.Repos.Interfaces;
 
@@ -25,7 +26,18 @@ public class UserRepository : IUserRepository
             Password = user.password,
             Email = user.email,
             CreatedDate = DateTime.Now,
-            CurrencyId = user.CurrencyId//to think : default currency
+            CurrencyId = user.CurrencyId,//to think : default currency
+            User_Categories = _context.Expense_Categories
+            .Where(e => e.CreatedAt == null)
+            .Select(e => new User_Categories{ Expense_CategoryId = e.Id}).ToList(), 
+            Incomes = _context.Income_Categories
+            .Select(e => new Incomes{ Amount = 0,
+                                    Description = "",
+                                    Reccurence = false,
+                                    Income_CategoryId = e.Id})
+            .ToList(),
+            
+
         };
         _context.Users.Add(newUser);
         _context.SaveChanges();

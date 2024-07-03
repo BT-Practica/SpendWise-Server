@@ -13,7 +13,7 @@ namespace SpendWise_Server.Repos.DataLayer
         public DbSet<Currencies> Currencies { get; set; }
         public DbSet<Economies> Economies { get; set; }
         public DbSet<Exchange> Exchanges { get; set; }
-        public DbSet<Income> Income_Categories { get; set; }
+        public DbSet<Income_Categories> Income_Categories { get; set; }
         public DbSet<Incomes> Incomes { get; set; }
         public DbSet<Expense_Categories> Expense_Categories {get; set;}
         public DbSet<Expenses> Expenses {get; set;}

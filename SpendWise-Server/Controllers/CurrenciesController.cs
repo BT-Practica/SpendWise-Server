@@ -19,14 +19,24 @@ public class CurrenciesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetCurrencyById(int id)
     {
-        var currency = await _currenciesService.GetCurrency(id);
-        return Ok(currency);
+        try{
+            var currency = await _currenciesService.GetCurrency(id);
+            return Ok(currency);
+        }catch(InvalidDataException e){
+            return BadRequest(new {e.Message});
+        }catch(KeyNotFoundException e){
+            return NotFound(new {e.Message});
+        }
     }
     [HttpGet]
     public async Task<IActionResult> GetCurrencies()
     {
-        var listOfCurrencies = await _currenciesService.GetCurrencies();
-        return Ok(listOfCurrencies);
+        try{
+            var listOfCurrencies = await _currenciesService.GetCurrencies();
+            return Ok(listOfCurrencies);
+        }catch(NullReferenceException e){
+            return NotFound(new {e.Message});
+        }
     }
 
 }

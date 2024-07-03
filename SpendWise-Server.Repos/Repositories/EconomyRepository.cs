@@ -18,7 +18,8 @@ public class EconomyRepository : IEconomyRepository
         Economies economy = new Economies
         {
             Amount = economiesDto.Amount,
-            RegistrationDate = DateTime.Now
+            RegistrationDate = DateTime.Now,
+            UserId = economiesDto.UserId
         };
         await _context.AddAsync(economy);
         await _context.SaveChangesAsync();
@@ -27,7 +28,7 @@ public class EconomyRepository : IEconomyRepository
     public async Task DeleteEconomy(int id)
     {
         var economies = await _context.Economies.FirstOrDefaultAsync(e => e.Id == id);
-        _context.Remove(id);
+        _context.Economies.Remove(economies);
         await _context.SaveChangesAsync();
     }
 
@@ -45,11 +46,8 @@ public class EconomyRepository : IEconomyRepository
 
     public async Task UpdateEconomy(EconomyDto economyDto, int id)
     {
-        Economies economies = new Economies();
-        economies.Amount = economyDto.Amount;
-        economies.RegistrationDate = DateTime.Now;
-
-        _context.Update(economies);
-        await _context.SaveChangesAsync(true);
+        Economies economyToUpdate = _context.Economies.FirstOrDefault(u => u.Id == id);
+        economyToUpdate.Amount = economyDto.Amount;
+        _context.SaveChangesAsync();
     }
 }
