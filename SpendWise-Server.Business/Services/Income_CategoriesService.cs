@@ -9,8 +9,8 @@ namespace SpendWise_Server.Business.Services
     public class Income_CategoriesService : IIncome_CategoriesService
     {
         private readonly IIncome_CategoriesRepository _repo;
-        private readonly ILogger _logger;
-        public Income_CategoriesService(IIncome_CategoriesRepository repo, ILogger<Income> logger)
+        private readonly ILogger<Income_CategoriesService> _logger;
+        public Income_CategoriesService(IIncome_CategoriesRepository repo, ILogger<Income_CategoriesService> logger)
         {
             _repo = repo;
             _logger = logger;

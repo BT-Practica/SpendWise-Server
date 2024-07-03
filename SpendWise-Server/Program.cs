@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
@@ -32,8 +33,6 @@ Log.Logger = new LoggerConfiguration()
                             //.WriteTo.MSSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
                             .MinimumLevel.Debug()
                             .CreateLogger();
-
-
 builder.Services.AddAuthentication(option =>
 {
     option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

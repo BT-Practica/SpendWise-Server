@@ -21,6 +21,8 @@ public static class ExtensionMethods
         services.AddScoped<IIncome_CategoriesRepository, Income_CategoriesRepository>();
         services.AddScoped<ICurrencyRepository, CurrencyRepository>();
         services.AddScoped<IEconomyRepository, EconomyRepository>();
+        services.AddScoped<IExpense_CategoriesRepository, Expense_CategoriesRepository>();
+        
         services.AddScoped<IIncomeRepository, IncomeRepository>();
         services.AddLogging();
     }

@@ -17,8 +17,10 @@ public static class BusinessRegistrations
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IExpenseService, ExpenseService>();
         services.AddScoped<IIncome_CategoriesService, Income_CategoriesService>();
-        services.AddScoped<ICurrencyRepository, CurrencyRepository>();
-        services.AddScoped<IIncomeServices, IncomeService>();
+        services.AddScoped<ICurrencyService, CurrenciesService>();
+        services.AddScoped<IExpense_CategoriesService, Expense_CategoriesService>();
+        services.AddScoped<IEconomyService, EconomyService>();
+        
         services.AddLogging();
     }
 

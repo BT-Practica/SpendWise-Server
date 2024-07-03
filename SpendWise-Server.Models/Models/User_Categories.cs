@@ -12,7 +12,7 @@ public class User_Categories
     public int Id {get; set;}
     [Required]
     // de adaugat range
-    public string Budget {get; set;}
+    public int Budget {get; set;}
     [Required]
     public User User {get; set;}
     [Required]

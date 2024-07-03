@@ -12,9 +12,9 @@ namespace SpendWise_Server.Business.Services;
 
 public class CurrenciesService : ICurrencyService
 {
-    private readonly ILogger _logger;
+    private readonly ILogger<CurrenciesService> _logger;
     private readonly ICurrencyRepository _currencyRepository;
-    public CurrenciesService(ICurrencyRepository currencyRepository, ILogger logger)
+    public CurrenciesService(ICurrencyRepository currencyRepository, ILogger<CurrenciesService> logger)
     {
         _currencyRepository = currencyRepository;
         _logger = logger;
