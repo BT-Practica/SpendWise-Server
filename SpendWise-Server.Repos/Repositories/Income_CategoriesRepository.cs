@@ -10,8 +10,8 @@ namespace SpendWise_Server.Repos.Repositories
     public class Income_CategoriesRepository : IIncome_CategoriesRepository
     {
         private readonly DataContext _context;
-        private readonly ILogger _logger;
-        public Income_CategoriesRepository(DataContext context, ILogger<Income> logger)
+        private readonly ILogger<Income_CategoriesRepository> _logger;
+        public Income_CategoriesRepository(DataContext context, ILogger<Income_CategoriesRepository> logger)
         {
             _logger = logger;
             _context = context;

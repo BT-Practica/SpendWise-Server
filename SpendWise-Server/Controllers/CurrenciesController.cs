@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SpendWise_Server.Business.Interfaces;
 using SpendWise_Server.Business.Services;
 
 namespace SpendWise_Server.Controllers;
@@ -7,9 +8,9 @@ namespace SpendWise_Server.Controllers;
 [ApiController]
 public class CurrenciesController : ControllerBase
 {
-    private readonly CurrenciesService _currenciesService;
-    private readonly ILogger _logger;
-    public CurrenciesController(CurrenciesService currenciesService, ILogger logger)
+    private readonly ICurrencyService _currenciesService;
+    private readonly ILogger<CurrenciesController> _logger;
+    public CurrenciesController(ICurrencyService currenciesService, ILogger<CurrenciesController> logger)
     {
         _currenciesService = currenciesService;
         _logger = logger;

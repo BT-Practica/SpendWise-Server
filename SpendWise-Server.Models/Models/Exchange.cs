@@ -12,7 +12,7 @@ public class Exchange
     [Key]
     public int Id {get; set;}
     [Required]
-    public double Amount {get; set;}
+    public double Amount {get; set;}//curs
     [Required]
     public int FirstCurrencyId {get; set;}
     [Required]

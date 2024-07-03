@@ -13,8 +13,8 @@ namespace SpendWise_Server.Repos.Repositories;
 public class CurrencyRepository : ICurrencyRepository
 {
     private readonly DataContext _dataContext;
-    private readonly ILogger _logger;
-    public CurrencyRepository(DataContext dataContext, ILogger<Currencies> logger)
+    private readonly ILogger<CurrencyRepository> _logger;
+    public CurrencyRepository(DataContext dataContext, ILogger<CurrencyRepository> logger)
     {
         _dataContext = dataContext;
         _logger = logger;
