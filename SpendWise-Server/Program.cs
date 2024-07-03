@@ -16,9 +16,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
-        builder => builder.WithOrigins("http://localhost:2113")
+        builder => builder.WithOrigins("http://localhost:4200")
                           .AllowAnyHeader()
-                          .AllowAnyMethod());
+                          .AllowAnyMethod()
+                          .AllowCredentials());
 });
 
 //Creting the logger
