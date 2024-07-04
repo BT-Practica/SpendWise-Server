@@ -9,8 +9,6 @@ namespace SpendWise_Server.Models.DTOs.IncomesDtos
     public class CreateIncomeDto
     {
     [Required]
-    public DateTime RegistrationDate { get; set; }
-    [Required]
     public int Amount {get; set;} 
     [MaxLength(200)]
     public string Description { get; set; }

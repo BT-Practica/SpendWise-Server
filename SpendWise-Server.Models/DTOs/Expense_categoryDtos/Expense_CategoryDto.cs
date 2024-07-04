@@ -13,8 +13,5 @@ public class Expense_CategoryDto
     [Required]
     [MaxLength(75)]
     public string Name {get; set;}
-    [Required]
-    public DateTime CreatedAt{get; set;}
-
     
 }

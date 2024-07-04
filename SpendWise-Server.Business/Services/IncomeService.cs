@@ -17,6 +17,9 @@ namespace SpendWise_Server.Business.Services
 
         public async Task CreateIncome(CreateIncomeDto incomeData)
         {
+            if(incomeData.Amount == 0){
+                throw new InvalidDataException("Amount must not be null");
+            }
             if(incomeData == null){
                 throw new NullReferenceException("JSON data is null");
             }
@@ -25,6 +28,9 @@ namespace SpendWise_Server.Business.Services
 
         public async Task DeleteIncome(int id)
         {
+            if(id <= 0 ){
+                throw new InvalidDataException("Invalid ID");
+            }
             await _repo.DeleteIncome(id);
         }
 
@@ -38,9 +44,17 @@ namespace SpendWise_Server.Business.Services
             return await _repo.GetIncomeByUserId(userid);
         }
 
-        public async Task UpdateIncome(IncomesDto categoryDto, int id, int userId)
+        public async Task UpdateIncome(IncomesDto incomeData, int id)
         {
-            await _repo.UpdateIncome(id, categoryDto, userId);
+            if(id <= 0){
+                throw new InvalidDataException("Invalid ID");
+            }
+
+            if (incomeData == null)
+            {
+                throw new InvalidDataException("JSON data is null");
+            }
+            await _repo.UpdateIncome(id, incomeData);
         }
     }
 }

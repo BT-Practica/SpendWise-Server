@@ -18,7 +18,7 @@ public class Expense_CategoriesController : ControllerBase
         _expense_CategoriesService = expense_CategoriesService;
     }
 
-    [HttpGet("GetExpenses")]
+    [HttpGet("GetExpenseCategoriesByUserId")]
     public async Task<IActionResult> GetExpense_CategoryByUserId(int userId){
         return Ok(await _expense_CategoriesService.getExpenseCategoriesByUserId(userId));
     }

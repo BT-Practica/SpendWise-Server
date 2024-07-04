@@ -25,17 +25,10 @@ namespace SpendWise_Server.Controllers
                 var incomes = await _incomeServices.GetSingleIncomeByUserId(userId);
                 return Ok(incomes);
             }
-            catch (Exception ex)
+            catch (KeyNotFoundException ex)
             {
-                return NotFound(ex.Message);
+                return NotFound(new {ex.Message});
             }
-        }
-
-        [HttpGet("GetIncomes")]
-        public async Task<ActionResult<List<Incomes>>> GetIncomes()
-        {
-            var incomes = await _incomeServices.GetAllIncome();
-            return Ok(incomes);
         }
 
         [HttpPost("CreateIncomes")]
@@ -50,29 +43,28 @@ namespace SpendWise_Server.Controllers
             {
                 Log.Error(e.Message);
                 return BadRequest(new {e.Message});
+            }catch(InvalidDataException e){
+                Log.Error(e.Message);
+                return BadRequest(new {e.Message});
             }
+
         }
 
 
 
         [HttpPut("UpdateIncomes")]
-        public async Task<IActionResult> UpdateIncomes(IncomesDto incomes, int id, int userId)
+        public async Task<IActionResult> UpdateIncomes(IncomesDto incomes, int id)
         {
-            if (incomes == null)
-            {
-                Log.Error("The income is invalid");
-                return BadRequest("Invalid income data");
-            }
 
             try
             {
-                await _incomeServices.UpdateIncome(incomes, id, userId);
+                await _incomeServices.UpdateIncome(incomes, id);
                 return Ok("Income updated successfully");
             }
-            catch (Exception ex)
+            catch (InvalidDataException e)
             {
-                Log.Error(ex, "Failed to update income");
-                return StatusCode(500, "Failed to update income: " + ex.Message);
+                Log.Error("Failed to update income");
+                return BadRequest(new {e.Message});
             }
         }
 
@@ -84,15 +76,15 @@ namespace SpendWise_Server.Controllers
                 await _incomeServices.DeleteIncome(id);
                 return Ok("Income deleted successfully");
             }
-            catch (ArgumentException ex)
+            catch (InvalidDataException e)
             {
-                Log.Warning(ex, "Income not found");
-                return NotFound("Income not found");
+                Log.Warning($"Error in IncomesController.DeleteIncomes {e.Message}");
+                return NotFound(new {e.Message});
             }
-            catch (Exception ex)
+            catch (KeyNotFoundException e)
             {
-                Log.Error(ex, "Failed to delete income");
-                return StatusCode(500, "Failed to delete income: " + ex.Message);
+                Log.Error("Failed to delete income");
+                return NotFound(new {e.Message});
             }
         }
 
