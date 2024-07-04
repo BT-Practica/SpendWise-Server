@@ -20,7 +20,11 @@ public class Expense_CategoriesController : ControllerBase
 
     [HttpGet("GetExpenseCategoriesByUserId")]
     public async Task<IActionResult> GetExpense_CategoryByUserId(int userId){
-        return Ok(await _expense_CategoriesService.getExpenseCategoriesByUserId(userId));
+        try{
+            return Ok(await _expense_CategoriesService.getExpenseCategoriesByUserId(userId));
+        }catch(InvalidDataException e){
+            return BadRequest( new {e.Message});
+        }
     }
     [HttpPost("AddExpense_Category")]
     public async Task<IActionResult> AddExpenseCategoryToUser(Expense_CategoryDto expensecategory){
@@ -38,6 +42,9 @@ public class Expense_CategoriesController : ControllerBase
             return Ok();
         }catch(InvalidDataException e){
             return BadRequest(new {e.Message});
+        }catch(InvalidOperationException e){
+            return BadRequest(new {e.Message});
+
         }
     }
     

@@ -10,5 +10,6 @@ namespace SpendWise_Server.Business.Interfaces
         Task CreateEconomy(EconomyDto economy);
         Task UpdateEcnomy(EconomyDto economy, int id);
         Task DeleteEconomy(int id);
+        Task<Economies> GetEconomyByUserId(int userId);
     }
 }

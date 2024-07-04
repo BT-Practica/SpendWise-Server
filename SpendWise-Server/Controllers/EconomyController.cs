@@ -59,6 +59,19 @@ public class EconomyController : ControllerBase
         }
     }
 
+    [HttpGet("GetEconomiesByUserId")]
+    public async Task<IActionResult> GetEconomyByUserId(int userId){
+        try{
+            var economy = await _economyService.GetEconomyByUserId(userId);
+            return Ok(economy);
+        }catch(InvalidDataException e){
+            Log.Error($"Error in EconomyController.GetEconomyByUserId: {e.Message}");
+            return BadRequest(new {e.Message});
+        }catch(KeyNotFoundException e){
+            Log.Error($"Error in EconomyController.GetEconomyByUserId: {e.Message}");
+            return NotFound(new {e.Message});
+        }
+    }
 
     [HttpPost("AddEconomy")]
     public async Task<IActionResult> AddEconomy([FromBody] EconomyDto economy)
@@ -105,6 +118,9 @@ public class EconomyController : ControllerBase
         {
             Log.Error($"Error in EconomyController.DeleteEconomy: {e.Message}");
             return BadRequest(e.Message);
+        }catch(InvalidDataException e){
+            Log.Error($"Error in EconomyController.DeleteEconomy: {e.Message}");
+            return BadRequest(new {e.Message});
         }
     }
 }

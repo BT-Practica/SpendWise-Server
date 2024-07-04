@@ -38,10 +38,13 @@ public class Expense_CategoriesRepository : IExpense_CategoriesRepository
         var dataToDelete = await _context.User_Categories
         .Include(u => u.Expense_Category)
         .FirstOrDefaultAsync(u => u.UserId == data.UserId && u.Expense_CategoryId == data.ExpenseCategoryid );
-
-        _context.User_Categories.Remove(dataToDelete);
-
-        _context.SaveChanges();
+        
+        if(dataToDelete.Expense_Category.CreatedAt != null){
+            _context.User_Categories.Remove(dataToDelete);
+            _context.SaveChanges();
+        }else{
+            throw new InvalidOperationException("Default categories can't be deleted");
+        }
     }
 
     public async Task<List<Expense_Categories>> getExpenseCategoriesByUserId(int userId)

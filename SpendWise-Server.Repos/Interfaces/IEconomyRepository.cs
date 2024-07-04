@@ -7,6 +7,7 @@ public interface IEconomyRepository
 {
     List<Economies> GetAllEconomies();
     Economies GetEconomy(int id);
+    Task<Economies> GetEconomyByUserId(int userId);
     Task AddEconomy(EconomyDto economies);
     Task UpdateEconomy(EconomyDto economyDto, int id);
     Task DeleteEconomy(int id);

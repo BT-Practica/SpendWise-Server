@@ -15,14 +15,20 @@ public class EconomyRepository : IEconomyRepository
     }
     public async Task AddEconomy(EconomyDto economiesDto)
     {
-        Economies economy = new Economies
-        {
-            Amount = economiesDto.Amount,
-            RegistrationDate = DateTime.Now,
-            UserId = economiesDto.UserId
-        };
-        await _context.AddAsync(economy);
+        var verifyUserHasEconomy = await _context.Economies.FirstOrDefaultAsync(u => u.UserId == economiesDto.UserId);
+        if(verifyUserHasEconomy != null){
+            verifyUserHasEconomy.Amount = economiesDto.Amount;
+        }else{
+            Economies economy = new Economies
+            {
+                Amount = economiesDto.Amount,
+                RegistrationDate = DateTime.Now,
+                UserId = economiesDto.UserId
+            };
+            await _context.AddAsync(economy);
+        }
         await _context.SaveChangesAsync();
+
     }
 
     public async Task DeleteEconomy(int id)
@@ -42,6 +48,15 @@ public class EconomyRepository : IEconomyRepository
     {
         var economies = _context.Economies.FirstOrDefault(e => e.Id == id);
         return economies;
+    }
+
+    public async Task<Economies> GetEconomyByUserId(int userId)
+    {
+        var economy = await _context.Economies.FirstOrDefaultAsync(u => u.UserId == userId);
+        if(economy == null){
+            throw new KeyNotFoundException("User does not have economy added.");
+        }
+        return economy;
     }
 
     public async Task UpdateEconomy(EconomyDto economyDto, int id)

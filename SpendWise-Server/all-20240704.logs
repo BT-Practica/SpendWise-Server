@@ -1,0 +1,25 @@
+2024-07-04 14:38:13.692 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-04 14:40:36.876 +03:00 [ERR] Error in EconomyController.GetEconomy: Invalid ID
+2024-07-04 14:41:08.178 +03:00 [INF] Economy SpendWise_Server.Models.DTOs.EconomyDtos.EconomyDto added
+2024-07-04 15:02:40.053 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-04 15:05:14.636 +03:00 [ERR] Error in EconomyController.GetEconomyByUserId: User does not have economy added.
+2024-07-04 15:05:32.334 +03:00 [INF] Economy SpendWise_Server.Models.DTOs.EconomyDtos.EconomyDto added
+2024-07-04 15:05:42.344 +03:00 [ERR] Error in EconomyController.GetEconomyByUserId: User does not have economy added.
+2024-07-04 15:11:16.444 +03:00 [INF] Economy SpendWise_Server.Models.DTOs.EconomyDtos.EconomyDto added
+2024-07-04 15:11:40.959 +03:00 [INF] Economy SpendWise_Server.Models.DTOs.EconomyDtos.EconomyDto added
+2024-07-04 15:17:24.140 +03:00 [INF] Economy SpendWise_Server.Models.DTOs.EconomyDtos.EconomyDto added
+2024-07-04 15:17:54.795 +03:00 [INF] Economy deleted
+2024-07-04 15:18:22.671 +03:00 [INF] Economy SpendWise_Server.Models.DTOs.EconomyDtos.EconomyDto added
+2024-07-04 15:18:40.520 +03:00 [INF] Economy deleted
+2024-07-04 15:21:42.048 +03:00 [INF] Economy deleted
+2024-07-04 15:24:03.371 +03:00 [INF] Economy SpendWise_Server.Models.DTOs.EconomyDtos.EconomyDto added
+2024-07-04 15:24:14.244 +03:00 [INF] Economy SpendWise_Server.Models.DTOs.EconomyDtos.EconomyDto added
+2024-07-04 15:24:31.072 +03:00 [INF] Economy SpendWise_Server.Models.DTOs.EconomyDtos.EconomyDto added
+2024-07-04 15:24:50.756 +03:00 [INF] Economy deleted
+2024-07-04 15:24:56.252 +03:00 [ERR] Error in EconomyController.DeleteEconomy: Invalid ID
+2024-07-04 15:25:01.140 +03:00 [ERR] Error in EconomyController.DeleteEconomy: Invalid ID
+2024-07-04 15:25:04.416 +03:00 [ERR] Error in EconomyController.DeleteEconomy: Invalid ID
+2024-07-04 15:25:07.522 +03:00 [ERR] Error in EconomyController.DeleteEconomy: Invalid ID
+2024-07-04 15:32:46.709 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created
+2024-07-04 15:37:05.752 +03:00 [ERR] Eroare in AuthController.Register: Username already exists
+2024-07-04 15:37:23.642 +03:00 [INF] User:SpendWise_Server.Models.DTOs.UserRegisterDTO created

@@ -50,6 +50,14 @@ namespace SpendWise_Server.Business.Services
             return economy;
         }
 
+        public Task<Economies> GetEconomyByUserId(int userId)
+        {
+            if(userId <= 0){
+                throw new InvalidDataException("Invalid ID");
+            }
+            return _economyRepository.GetEconomyByUserId(userId);
+        }
+
         public async Task UpdateEcnomy(EconomyDto economy, int id)
         {
             if (id <= 0)
