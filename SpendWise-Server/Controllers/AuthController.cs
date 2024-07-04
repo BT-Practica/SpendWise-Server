@@ -45,8 +45,8 @@ public class AuthController : ControllerBase
         //in business to verify uname,password; if user exists return jwt.done
         try
         {
-            _userService.FindUserByUNameAndPass(user);
-            return Ok(_tokenService.CreateToken(user.userName));
+            var c = _userService.FindUserByUNameAndPass(user);
+            return Ok(_tokenService.CreateToken(user.userName, c.Id));
         }
         catch (KeyNotFoundException e)
         {

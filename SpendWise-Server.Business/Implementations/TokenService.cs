@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SpendWise_Server.Repos.Interfaces;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace SpendWise_Server.Repos.Repositories;
 
@@ -18,7 +14,7 @@ public class TokenService : ITokenService
     {
         _configuration = configuration;
     }
-    public string CreateToken(string username)
+    public string CreateToken(string username, int userId)
     {
         var key = _configuration["Jwt:Key"];
         var keyBytes = Encoding.UTF8.GetBytes(key);
@@ -28,6 +24,7 @@ public class TokenService : ITokenService
             Subject = new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.NameIdentifier, username),
+                new Claim("userId", userId.ToString())
             }),
             Audience = _configuration["Jwt:Audience"],
             Issuer = _configuration["Jwt:Issuer"],
@@ -36,8 +33,8 @@ public class TokenService : ITokenService
                                 new SymmetricSecurityKey(keyBytes),
                                 SecurityAlgorithms.HmacSha256Signature)
         };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+        return tokenHandler.WriteToken(token);
     }
 
     public int DecodeJWT(string jwt)
