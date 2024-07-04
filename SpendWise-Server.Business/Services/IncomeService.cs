@@ -1,6 +1,7 @@
 ﻿using SpendWise_Server.Business.Interfaces;
 using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs.Incomes;
+using SpendWise_Server.Models.DTOs.IncomesDtos;
 using SpendWise_Server.Repos.Interfaces;
 
 namespace SpendWise_Server.Business.Services
@@ -14,9 +15,12 @@ namespace SpendWise_Server.Business.Services
         }
 
 
-        public async Task CreateIncome(IncomesDto incomeDto, int userId)
+        public async Task CreateIncome(CreateIncomeDto incomeData)
         {
-            await _repo.CreateIncome(incomeDto, userId);
+            if(incomeData == null){
+                throw new NullReferenceException("JSON data is null");
+            }
+            await _repo.CreateIncome(incomeData);
         }
 
         public async Task DeleteIncome(int id)

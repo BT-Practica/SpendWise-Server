@@ -16,33 +16,12 @@ namespace SpendWise_Server.Repos.Repositories
             _logger = logger;
             _context = context;
         }
-
-        public void AddIncomeCategories(Income_CategoryDto categoryDto)
-        {
-            Income_Categories categories = new Income_Categories() { Name = categoryDto.Name };
-
-
-            _context.Income_Categories.AddAsync(categories);
-            _context.SaveChangesAsync();
-
-        }
-
-        public void DeleteIncomeCategories(int id)
-        {
-            var incomeCat = _context.Income_Categories.FirstOrDefault(i => i.Id == id);
-            if (incomeCat != null)
-            {
-                _logger.LogError("The income category dosent exist");
-            }
-            _context.Income_Categories.Remove(incomeCat);
-            _context.SaveChanges();
-        }
-
+        
         public List<Income_Categories> GetIncomeCategories()
         {
-            IEnumerable<Income_Categories> categories = _context.Income_Categories.
-                AsNoTracking().ToList();
-            return _context.Income_Categories.ToList();
+            List<Income_Categories> categories = _context.Income_Categories
+            .AsNoTracking().ToList();
+            return categories;
 
         }
 

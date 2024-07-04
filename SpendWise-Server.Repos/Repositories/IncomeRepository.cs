@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs.Incomes;
+using SpendWise_Server.Models.DTOs.IncomesDtos;
 using SpendWise_Server.Repos.DataLayer;
 using SpendWise_Server.Repos.Interfaces;
 
@@ -18,37 +20,23 @@ namespace SpendWise_Server.Repos.Repositories
             _logger = logger;
         }
 
-        public async Task CreateIncome(IncomesDto incomesDto, int userid)
+        public async Task CreateIncome(CreateIncomeDto incomeData)
         {
-            _logger.LogInformation("Attempting to create income for user {UserId}", userid);
+            _logger.LogInformation($"Attempting to create income for user {incomeData.UserId}");
 
-            var checkIfUserIdExists = await _context.Users.AnyAsync(i => i.Id == userid);
-            if (!checkIfUserIdExists)
-            {
-                _logger.LogWarning("User {UserId} does not exist", userid);
-                throw new Exception("The user doesn't exist");
+            var income = _context.Incomes
+            .Include(i => i.Income_Category)
+            .FirstOrDefault(u => u.Income_Category.Name == incomeData.Income_CategoryName && u.UserId == incomeData.UserId);
+            if(income == null){
+                throw new KeyNotFoundException("User does not have this Income Category");
             }
 
-            var income = new Incomes()
-            {
-                Description = incomesDto.Description,
-                Reccurence = incomesDto.Reccurence,
-                UserId = userid,
-                Income_CategoryId = incomesDto.Income_CategoryId,
-                RegistrationDate = DateTime.Now
-            };
+            income.Amount = incomeData.Amount;
+            income.Description = incomeData.Description;
+            income.RegistrationDate = DateTime.Now;
+            income.Reccurence = incomeData.Reccurence;
 
-            await _context.Incomes.AddAsync(income);
-            var result = await _context.SaveChangesAsync();
-            if (result > 0)
-            {
-                _logger.LogInformation("Income created successfully for user {UserId}", userid);
-            }
-            else
-            {
-                _logger.LogError("Failed to save income for user {UserId}", userid);
-                throw new Exception("Failed to create income");
-            }
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteIncome(int id)

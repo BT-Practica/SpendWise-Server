@@ -3,6 +3,7 @@ using Serilog;
 using SpendWise_Server.Business.Interfaces;
 using SpendWise_Server.Models;
 using SpendWise_Server.Models.DTOs.Incomes;
+using SpendWise_Server.Models.DTOs.IncomesDtos;
 
 namespace SpendWise_Server.Controllers
 {
@@ -38,23 +39,17 @@ namespace SpendWise_Server.Controllers
         }
 
         [HttpPost("CreateIncomes")]
-        public async Task<IActionResult> CreateIncomes(IncomesDto incomes, int userId)
+        public async Task<IActionResult> CreateIncomes(CreateIncomeDto incomeData)
         {
-            if (incomes == null)
-            {
-                Log.Error("The income is invalid");
-                return BadRequest("Invalid income data");
-            }
-
             try
             {
-                await _incomeServices.CreateIncome(incomes, userId);
+                await _incomeServices.CreateIncome(incomeData);
                 return Ok("Income created successfully");
             }
-            catch (Exception ex)
+            catch (NullReferenceException e)
             {
-                Log.Error(ex, "Failed to create income");
-                return StatusCode(500, "Failed to create income: " + ex.Message);
+                Log.Error(e.Message);
+                return BadRequest(new {e.Message});
             }
         }
 

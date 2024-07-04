@@ -22,32 +22,20 @@ namespace SpendWise_Server.Controllers
         {
             return Ok(_categoriesService.GetAllIncomeCategories());
         }
-        [HttpGet("GetIncomeCategory")]
-        public IActionResult GetIncomeCategory(int id)
-        {
-            return Ok(_categoriesService.GetSingleIncomeCategoryById(id));
-        }
 
-        [HttpPost("AddIncomeCategories")]
-        public IActionResult AddIncomeCategories(Income_CategoryDto categoryDto)
-        {
-            _categoriesService.AddIncomeCategories(categoryDto);
-            return Ok("The income categories what succesfully added");
-        }
+        // [HttpGet("GetIncomeCategory")]
+        // public IActionResult GetIncomeCategory(int id)
+        // {
+        //     return Ok(_categoriesService.GetSingleIncomeCategoryById(id));
+        // }
 
-        [HttpPut("UpdateIncomeCategories")]
-        public IActionResult UpdateIncomeCategories(Income_CategoryDto categoryDto, int id)
-        {
-            _categoriesService.UpdateIncomeCategories(categoryDto, id);
-            return Ok();
-        }
 
-        [HttpDelete("DeleteIncomeCategories")]
-        public IActionResult DeleteIncomeCategories(int id)
-        {
-            _categoriesService.DeleteIncomeCategories(id);
-            return Ok("The income categories what succesfully deleted");
-        }
+        // [HttpPut("UpdateIncomeCategories")]
+        // public IActionResult UpdateIncomeCategories(Income_CategoryDto categoryDto, int id)
+        // {
+        //     _categoriesService.UpdateIncomeCategories(categoryDto, id);
+        //     return Ok();
+        // }
 
     }
 }

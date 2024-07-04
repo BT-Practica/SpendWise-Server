@@ -16,18 +16,6 @@ namespace SpendWise_Server.Business.Services
             _logger = logger;
         }
 
-        public void AddIncomeCategories(Income_CategoryDto categoryDto)
-        {
-            _logger.LogInformation("You just added an income category");
-            _repo.AddIncomeCategories(categoryDto);
-        }
-
-        public void DeleteIncomeCategories(int id)
-        {
-            _logger.LogInformation("You just deleted an income category");
-            _repo.DeleteIncomeCategories(id);
-        }
-
         public List<Income_Categories> GetAllIncomeCategories()
         {
             _logger.LogInformation("You just fetched all income categories");
