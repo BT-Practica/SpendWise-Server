@@ -6,7 +6,7 @@ namespace SpendWise_Server.Models.DTOs.Incomes
     {
         [Required]
         public int Amount {get; set;} 
-        [Required]
+        [MaxLength(200)]
         public string Description { get; set; }
         [Required]
         public bool Reccurence { get; set; }
