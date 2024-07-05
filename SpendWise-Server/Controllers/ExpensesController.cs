@@ -56,9 +56,8 @@ public class ExpensesController : ControllerBase
     {
         try
         {
-            await _expenseService.CreateExpense(expense);
             Log.Information($"Expense {expense} added");
-            return Ok("Expense added");
+            return Ok(await _expenseService.CreateExpense(expense));
         }
         catch (NullReferenceException e)
         {

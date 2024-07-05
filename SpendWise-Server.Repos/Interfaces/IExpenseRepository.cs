@@ -7,6 +7,6 @@ public interface IExpenseRepository
 {
     public Task<Expenses> GetExpenseById(int id);
     public Task<IEnumerable<Expenses>> GetExpensesByUserId(int userId);
-    public Task CreateExpense(CreateExpenseDTO expense);
+    public Task<Expenses> CreateExpense(CreateExpenseDTO expense);
     public Task DeleteExpense(RemoveExpenseDTO data);
 }

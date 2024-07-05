@@ -20,13 +20,13 @@ namespace SpendWise_Server.Business.Services
             _userRepository = userRepository;
         }
 
-        public async Task CreateExpense(CreateExpenseDTO expense)
+        public async Task<Expenses> CreateExpense(CreateExpenseDTO expense)
         {
             if (expense == null)
             {
                 throw new NullReferenceException("Expense is null");
             }
-            await _expenseRepository.CreateExpense(expense);
+            return await _expenseRepository.CreateExpense(expense);
         }
 
         public async Task DeleteExpense(RemoveExpenseDTO data)

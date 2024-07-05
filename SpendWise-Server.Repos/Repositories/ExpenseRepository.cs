@@ -17,7 +17,7 @@ namespace SpendWise_Server.Repos.Repositories
         {
             _context = context;
         }
-        public async Task CreateExpense(CreateExpenseDTO expense)//DTO
+        public async Task<Expenses> CreateExpense(CreateExpenseDTO expense)//DTO
         {
             Expenses newExpense = new Expenses()
             {
@@ -29,6 +29,7 @@ namespace SpendWise_Server.Repos.Repositories
             };
             await _context.Expenses.AddAsync(newExpense);
             _context.SaveChanges();
+            return newExpense;
         }
         public async Task DeleteExpense(RemoveExpenseDTO data)
         {
