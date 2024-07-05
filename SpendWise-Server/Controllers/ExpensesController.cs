@@ -39,7 +39,7 @@ public class ExpensesController : ControllerBase
         }
     }
     [HttpGet("GetExpenseByUserId")]
-    public async Task<ActionResult<IEnumerable<Expenses>>> GetExpensesByUserId(int userId)
+    public async Task<ActionResult<IEnumerable<DisplayExpensesResponse>>> GetExpensesByUserId(int userId)
     {
         try
         {
@@ -51,7 +51,7 @@ public class ExpensesController : ControllerBase
             return BadRequest(e.Message);
         }
     }
-    [HttpPut("AddExpense")]
+    [HttpPost("AddExpense")]
     public async Task<IActionResult> AddExpense(CreateExpenseDTO expense)
     {
         try
@@ -66,7 +66,7 @@ public class ExpensesController : ControllerBase
     }
 
     [HttpDelete("RemoveExpense")]
-    public async Task<IActionResult> RemoveExpense(RemoveExpenseDTO data)
+    public async Task<IActionResult> RemoveExpense([FromBody]RemoveExpenseDTO data)
     {
         try
         {

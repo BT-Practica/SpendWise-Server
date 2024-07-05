@@ -52,7 +52,7 @@ namespace SpendWise_Server.Business.Services
             return expense;
         }
 
-        public async Task<IEnumerable<Expenses>> GetExpensesByUserId(int userId)
+        public async Task<IEnumerable<DisplayExpensesResponse>> GetExpensesByUserId(int userId)
         {
             if (userId <= 0)
             {

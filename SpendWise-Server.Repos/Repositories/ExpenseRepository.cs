@@ -46,9 +46,17 @@ namespace SpendWise_Server.Repos.Repositories
             return await _context.Expenses.FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public async Task<IEnumerable<Expenses>> GetExpensesByUserId(int userId)
+        public async Task<IEnumerable<DisplayExpensesResponse>> GetExpensesByUserId(int userId)
         {
-            return await _context.Expenses.Where(e => e.UserId == userId).ToListAsync();
+            return await _context.Expenses.Include(e => e.Expense_Category)
+            .Where(e => e.UserId == userId)
+            .Select(e => new DisplayExpensesResponse{
+                Id = e.Id,
+                Amount = e.Amount,
+                Description = e.Description,
+                Category = e.Expense_Category.Name
+            })  
+            .ToListAsync();
         }
 
     }
